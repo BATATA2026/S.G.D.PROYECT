@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="page-index page-guardadata" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardaData | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+    <meta name="description" content="GuardaData: herramientas opcionales de organización, archivos y diagnósticos de S.G.D.">
+    <link rel="stylesheet" href="styles.css?v=20261024-3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <script>
+        try {
+            const tema = localStorage.getItem("tema-sgd");
+            document.body.classList.toggle("tema-oscuro", tema === "oscuro");
+            document.body.setAttribute("data-theme", tema === "oscuro" ? "dark" : "light");
+            const desactivar = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", desactivar);
+            if (!desactivar) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+    </script>
+    <div id="transicion-tema"></div>
+    <header class="encabezado-principal">
+        <nav class="nav contenedor" aria-label="Navegación principal">
+            <a href="index.html" class="marca" aria-label="S.G.D., volver al sitio principal"><span class="s">S</span>.<span class="g">G</span>.<span class="d">D</span>.</a>
+            <div class="acciones-nav">
+                <button id="boton-tema" class="tema-btn" type="button" aria-label="Cambiar a tema oscuro" title="Cambiar tema">🌙</button>
+                <a href="index.html" class="guarda-volver"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a Inicio</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="guardadata-acceso" id="guardadata-acceso" aria-live="polite">
+            <div class="contenedor">
+                <div class="guardadata-acceso-tarjeta">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <div>
+                        <h2>Explorá GuardaData sin iniciar sesión</h2>
+                        <p>Esta demostración pública usa archivos y datos de ejemplo. Los archivos que selecciones permanecen en tu dispositivo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="guarda-os-seccion" id="guarda-os" hidden>
+            <div class="contenedor">
+                <div class="encabezado-seccion revelar">
+                    <span class="subtitulo">S.G.D. GUARDADATA · DEMOSTRACIÓN</span>
+                    <h2>Un espacio para ver tus datos con más claridad.</h2>
+                    <p>Explorá el escritorio virtual y el panel DiagnosData. Las herramientas son opcionales: podés usar los servicios de S.G.D. sin contratar GuardaData.</p>
+                </div>
+
+                <div class="os-marco revelar" id="escritorio">
+                    <aside class="os-barra-lateral" aria-label="Navegación de la demostración">
+                        <a class="os-marca" href="#escritorio" aria-label="S.G.D. GuardaData, ir al inicio">
+                            <span><strong><span class="os-sigla-s">S</span>.<span class="os-sigla-g">G</span>.<span class="os-sigla-d">D</span>.</strong><small>GuardaData</small></span>
+                        </a>
+                        <nav class="os-menu" aria-label="Secciones del escritorio">
+                            <button class="os-enlace activo" type="button" data-os-vista="inicio" aria-pressed="true"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</button>
+                            <button class="os-enlace" type="button" data-os-vista="archivos" aria-pressed="false"><i class="fa-solid fa-folder" aria-hidden="true"></i> Archivos</button>
+                            <button class="os-enlace" type="button" data-os-vista="almacenamiento" aria-pressed="false"><i class="fa-solid fa-cloud" aria-hidden="true"></i> Almacenamiento</button>
+                            <button class="os-enlace" type="button" data-os-vista="diagnosdata" aria-pressed="false"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> DiagnosData</button>
+                            <button class="os-enlace" type="button" data-os-vista="copias" aria-pressed="false"><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i> Copias de seguridad</button>
+                            <button class="os-enlace" type="button" data-os-vista="informes" aria-pressed="false"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Informes</button>
+                            <button class="os-enlace" type="button" data-os-vista="configuracion" aria-pressed="false"><i class="fa-solid fa-gear" aria-hidden="true"></i> Configuración</button>
+                        </nav>
+                        <div class="os-usuario">
+                            <span class="os-estado-punto"></span>
+                            <span><span id="os-estado-usuario">Demostración pública</span><small>Archivos locales y datos de ejemplo</small></span>
+                        </div>
+                    </aside>
+
+                    <div class="os-contenido">
+                        <header class="os-cabecera">
+                            <div class="os-titulo">
+                                <span class="os-movil-marca"><span class="os-sigla-s">S</span>.<span class="os-sigla-g">G</span>.<span class="os-sigla-d">D</span>.</span>
+                                <h3 id="os-titulo-vista">GuardaData</h3>
+                                <p id="os-subtitulo-vista">Tu espacio de demostración para gestionar información</p>
+                            </div>
+                            <label class="os-busqueda">
+                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                                <span class="os-sr-only">Buscar archivos de ejemplo o seleccionados</span>
+                                <input id="os-busqueda-archivos" type="search" placeholder="Buscar archivos..." autocomplete="off">
+                            </label>
+                        </header>
+
+                        <div class="os-vista" id="os-vista-inicio" data-os-panel="inicio">
+                            <div class="os-saludo" id="escritorio-inicio">
+                                <div>
+                                    <span class="os-etiqueta">TU ESCRITORIO VIRTUAL</span>
+                                    <h4>¡Hola! Estás en modo demostración.</h4>
+                                    <p>Conocé cómo podrías organizar, encontrar y cuidar tus archivos.</p>
+                                </div>
+                                <span class="os-saludo-icono"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+                            </div>
+
+                            <div class="os-accesos">
+                                <button class="os-acceso" type="button" data-os-vista="archivos">
+                                    <span class="os-acceso-icono azul"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></span>
+                                    <strong>Mis archivos</strong><span>Organizá y encontrá documentos de ejemplo.</span><small>Ver archivos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small>
+                                </button>
+                                <button class="os-acceso" type="button" data-os-vista="almacenamiento">
+                                    <span class="os-acceso-icono celeste"><i class="fa-solid fa-cloud" aria-hidden="true"></i></span>
+                                    <strong>Almacenamiento</strong><span>Consultá un resumen ilustrativo del espacio.</span><small>Ver resumen <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small>
+                                </button>
+                                <button class="os-acceso" type="button" data-os-vista="diagnosdata">
+                                    <span class="os-acceso-icono verde"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i></span>
+                                    <strong>DiagnosData</strong><span>Revisá el ejemplo de estado y recomendaciones.</span><small>Abrir diagnóstico <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small>
+                                </button>
+                                <button class="os-acceso" type="button" data-os-vista="copias">
+                                    <span class="os-acceso-icono violeta"><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i></span>
+                                    <strong>Copias de seguridad</strong><span>Consultá buenas prácticas de respaldo.</span><small>Ver recomendaciones <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></small>
+                                </button>
+                            </div>
+
+                            <div class="os-paneles">
+                                <section class="os-panel os-panel-archivos" id="escritorio-archivos">
+                                    <div class="os-panel-titulo">
+                                        <div><span class="os-etiqueta">ORGANIZACIÓN</span><h4>Archivos recientes</h4></div>
+                                        <span class="os-demo-etiqueta">Ejemplos</span>
+                                    </div>
+                                    <div class="os-tabla-scroll">
+                                        <table class="os-tabla">
+                                            <thead><tr><th>Nombre</th><th>Tipo</th><th>Modificado</th></tr></thead>
+                                            <tbody id="os-lista-archivos">
+                                                <tr data-archivo><td><i class="fa-solid fa-file-excel archivo-verde" aria-hidden="true"></i> Planilla_gastos.xlsx</td><td>Excel</td><td>Hace 2 horas</td></tr>
+                                                <tr data-archivo><td><i class="fa-solid fa-file-powerpoint archivo-naranja" aria-hidden="true"></i> Presentacion_proyecto.pptx</td><td>PowerPoint</td><td>Hace 1 día</td></tr>
+                                                <tr data-archivo><td><i class="fa-solid fa-file-pdf archivo-rojo" aria-hidden="true"></i> Facturas_marzo.pdf</td><td>PDF</td><td>Hace 3 días</td></tr>
+                                                <tr data-archivo><td><i class="fa-solid fa-file-word archivo-azul" aria-hidden="true"></i> Informe_final.docx</td><td>Word</td><td>Hace 1 semana</td></tr>
+                                                <tr data-archivo><td><i class="fa-solid fa-file-image archivo-violeta" aria-hidden="true"></i> Notas_reunion.png</td><td>Imagen</td><td>Hace 1 semana</td></tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="os-sin-resultados" id="os-sin-resultados" hidden>No hay archivos de ejemplo que coincidan con la búsqueda.</p>
+                                    </div>
+                                    <p class="os-aviso-demo"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Estos nombres son ilustrativos; no representan archivos reales.</p>
+                                </section>
+
+                                <section class="os-panel os-panel-almacenamiento" id="escritorio-almacenamiento">
+                                    <div class="os-panel-titulo" id="escritorio-copias">
+                                        <div><span class="os-etiqueta">RESUMEN</span><h4>Almacenamiento y respaldos</h4></div>
+                                    </div>
+                                    <div class="os-uso">
+                                        <div class="os-grafico" role="img" aria-label="Gráfico ilustrativo: 42 por ciento utilizado"><span><strong>42%</strong><small>utilizado</small></span></div>
+                                        <ul class="os-leyenda">
+                                            <li><span class="os-punto drive"></span> Google Drive <strong>15 GB</strong></li>
+                                            <li><span class="os-punto nube"></span> OneDrive <strong>8 GB</strong></li>
+                                            <li><span class="os-punto dropbox"></span> Dropbox <strong>5 GB</strong></li>
+                                            <li><span class="os-punto otros"></span> Otros <strong>2 GB</strong></li>
+                                        </ul>
+                                    </div>
+                                    <p class="os-respaldo"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i><span><strong>Un consejo útil</strong>Guardá una copia independiente y comprobá periódicamente que puedas restaurarla.</span></p>
+                                    <a class="os-enlace-interno" href="diagnostico.html">Consultar sobre respaldos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div class="os-vista os-vista-diagnostico" data-os-panel="diagnosdata" hidden>
+                            <div class="os-alerta-cabecera">
+                                <div><span class="os-etiqueta">DIAGNOSDATA</span><h4>Diagnóstico y recomendaciones</h4><p>Un ejemplo visual de cómo presentar una revisión de seguridad.</p></div>
+                                <span class="os-demo-etiqueta"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Vista de ejemplo</span>
+                            </div>
+                            <div class="os-diagnostico-resumen" id="escritorio-informes">
+                                <article class="os-riesgo"><span class="os-acceso-icono verde"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span><div><small>Estado general</small><strong>Riesgo bajo</strong><p>La información ilustrativa se encuentra en buen estado.</p></div><span class="os-indicador-riesgo"></span></article>
+                                <div class="os-metricas">
+                                    <article><span class="os-metrica-icono ok"><i class="fa-solid fa-check" aria-hidden="true"></i></span><strong>6</strong><small>Comprobaciones realizadas</small></article>
+                                    <article><span class="os-metrica-icono aviso"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span><strong>1</strong><small>Advertencia</small></article>
+                                    <article><span class="os-metrica-icono error"><i class="fa-solid fa-xmark" aria-hidden="true"></i></span><strong>0</strong><small>Críticos</small></article>
+                                    <article><span class="os-metrica-icono ok"><i class="fa-solid fa-check" aria-hidden="true"></i></span><strong>5</strong><small>Correctas</small></article>
+                                </div>
+                            </div>
+                            <div class="os-paneles os-paneles-diagnostico">
+                                <section class="os-panel">
+                                    <div class="os-panel-titulo"><div><span class="os-etiqueta">REVISIÓN</span><h4>Resultados de ejemplo</h4></div></div>
+                                    <ul class="os-resultados">
+                                        <li><i class="fa-solid fa-circle-check resultado-ok" aria-hidden="true"></i><span>Copias de seguridad recientes</span><strong>Correcto</strong></li>
+                                        <li><i class="fa-solid fa-triangle-exclamation resultado-aviso" aria-hidden="true"></i><span>Archivos importantes sin respaldo</span><strong class="texto-aviso">A revisar</strong></li>
+                                        <li><i class="fa-solid fa-circle-check resultado-ok" aria-hidden="true"></i><span>Protección del dispositivo</span><strong>Correcto</strong></li>
+                                        <li><i class="fa-solid fa-circle-check resultado-ok" aria-hidden="true"></i><span>Organización de archivos</span><strong>Correcto</strong></li>
+                                        <li><i class="fa-solid fa-circle-check resultado-ok" aria-hidden="true"></i><span>Seguridad de acceso</span><strong>Correcto</strong></li>
+                                    </ul>
+                                </section>
+                                <section class="os-panel">
+                                    <div class="os-panel-titulo"><div><span class="os-etiqueta">PRÓXIMOS PASOS</span><h4>Recomendaciones</h4></div></div>
+                                    <ul class="os-recomendaciones">
+                                        <li><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i><span>Creá una copia independiente para tus archivos importantes.<small>Reduce el riesgo de pérdida de información.</small></span></li>
+                                        <li><i class="fa-solid fa-folder-tree" aria-hidden="true"></i><span>Revisá las carpetas y agrupá documentos por tema.<small>Una estructura clara facilita encontrarlos.</small></span></li>
+                                        <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span>Mantené actualizado el software de seguridad.<small>Consultá a un profesional si necesitás ayuda.</small></span></li>
+                                    </ul>
+                                    <a class="os-enlace-interno" href="diagnostico.html">Solicitar asesoramiento <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div class="os-vista os-vista-interior" data-os-panel="archivos" hidden>
+                            <div class="os-vista-cabecera">
+                                <div><span class="os-etiqueta">BIBLIOTECA</span><h4>Archivos</h4><p>Documentos de muestra para explorar una organización posible.</p></div>
+                                <span class="os-demo-etiqueta"><i class="fa-solid fa-flask" aria-hidden="true"></i> Datos ficticios</span>
+                            </div>
+                            <div class="os-resumen-mini">
+                                <article><i class="fa-solid fa-folder archivo-azul" aria-hidden="true"></i><span><strong>Documentos</strong><small>12 elementos</small></span></article>
+                                <article><i class="fa-solid fa-image archivo-violeta" aria-hidden="true"></i><span><strong>Imágenes</strong><small>8 elementos</small></span></article>
+                                <article><i class="fa-solid fa-file-invoice archivo-naranja" aria-hidden="true"></i><span><strong>Facturas</strong><small>5 elementos</small></span></article>
+                            </div>
+                            <section class="os-panel os-panel-amplio">
+                                <div class="os-panel-titulo"><div><span class="os-etiqueta">TODOS LOS ELEMENTOS</span><h4>Archivos recientes</h4></div><span class="os-demo-etiqueta">5 de ejemplo</span></div>
+                                <div class="os-tabla-scroll"><table class="os-tabla">
+                                    <thead><tr><th>Nombre</th><th>Carpeta</th><th>Tipo</th><th>Modificado</th><th>Estado</th></tr></thead>
+                                    <tbody>
+                                        <tr data-archivo><td><i class="fa-solid fa-file-excel archivo-verde" aria-hidden="true"></i> Planilla_gastos.xlsx</td><td>Documentos</td><td>Excel</td><td>Hace 2 horas</td><td><span class="os-estado-archivo">Organizado</span></td></tr>
+                                        <tr data-archivo><td><i class="fa-solid fa-file-powerpoint archivo-naranja" aria-hidden="true"></i> Presentacion_proyecto.pptx</td><td>Proyectos</td><td>PowerPoint</td><td>Hace 1 día</td><td><span class="os-estado-archivo">Organizado</span></td></tr>
+                                        <tr data-archivo><td><i class="fa-solid fa-file-pdf archivo-rojo" aria-hidden="true"></i> Facturas_marzo.pdf</td><td>Facturas</td><td>PDF</td><td>Hace 3 días</td><td><span class="os-estado-archivo">Revisar copia</span></td></tr>
+                                        <tr data-archivo><td><i class="fa-solid fa-file-word archivo-azul" aria-hidden="true"></i> Informe_final.docx</td><td>Documentos</td><td>Word</td><td>Hace 1 semana</td><td><span class="os-estado-archivo">Organizado</span></td></tr>
+                                        <tr data-archivo><td><i class="fa-solid fa-file-image archivo-violeta" aria-hidden="true"></i> Notas_reunion.png</td><td>Imágenes</td><td>Imagen</td><td>Hace 1 semana</td><td><span class="os-estado-archivo">Organizado</span></td></tr>
+                                    </tbody>
+                                </table></div>
+                                <p class="os-sin-resultados" id="os-archivos-sin-resultados" hidden>No hay archivos de ejemplo que coincidan con la búsqueda.</p>
+                                <p class="os-aviso-demo"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Las carpetas, archivos y estados de esta pantalla son ejemplos inventados.</p>
+                            </section>
+                            <section class="os-panel os-panel-amplio os-archivos-locales">
+                                <div class="os-panel-titulo">
+                                    <div><span class="os-etiqueta">TU DISPOSITIVO</span><h4>Archivos seleccionados</h4></div>
+                                    <label class="os-subir-archivos">
+                                        <i class="fa-solid fa-folder-open" aria-hidden="true"></i> Elegir archivos
+                                        <input class="os-input-archivos" id="os-selector-archivos" type="file" multiple>
+                                    </label>
+                                </div>
+                                <p class="os-ayuda-archivos">Seleccioná archivos para ver sus nombres y tamaños aquí. Permanecen en tu dispositivo; no se cargan ni se guardan.</p>
+                                <div class="os-tabla-scroll">
+                                    <table class="os-tabla">
+                                        <thead><tr><th>Nombre</th><th>Tipo</th><th>Tamaño</th><th>Acceso</th></tr></thead>
+                                        <tbody id="os-lista-local"></tbody>
+                                    </table>
+                                    <p class="os-sin-resultados" id="os-local-vacio">Todavía no seleccionaste archivos.</p>
+                                    <p class="os-sin-resultados" id="os-local-sin-resultados" hidden>No hay archivos seleccionados que coincidan con la búsqueda.</p>
+                                </div>
+                                <p class="os-aviso-demo"><i class="fa-solid fa-lock" aria-hidden="true"></i> Por privacidad, esta demostración no lee el contenido, no transmite archivos al servidor ni conserva la selección al cerrar la página.</p>
+                            </section>
+                        </div>
+
+                        <div class="os-vista os-vista-interior" data-os-panel="almacenamiento" hidden>
+                            <div class="os-vista-cabecera">
+                                <div><span class="os-etiqueta">ESPACIO Y SERVICIOS</span><h4>Almacenamiento</h4><p>Un panorama ilustrativo del espacio disponible en tus servicios.</p></div>
+                                <span class="os-demo-etiqueta"><i class="fa-solid fa-flask" aria-hidden="true"></i> Datos ficticios</span>
+                            </div>
+                            <div class="os-almacenamiento-principal">
+                                <section class="os-panel os-almacenamiento-total">
+                                    <div><span class="os-etiqueta">ESPACIO TOTAL DE EJEMPLO</span><h4>30 GB <small>de 70 GB</small></h4><p>42% del espacio está en uso</p></div>
+                                    <div class="os-barra-progreso" role="img" aria-label="42 por ciento de almacenamiento usado"><span></span></div>
+                                    <div class="os-espacio-leyenda"><span><i></i> Usado <strong>30 GB</strong></span><span><i></i> Disponible <strong>40 GB</strong></span></div>
+                                </section>
+                                <div class="os-grafico os-grafico-grande" role="img" aria-label="Gráfico ilustrativo: 42 por ciento utilizado"><span><strong>42%</strong><small>utilizado</small></span></div>
+                            </div>
+                            <section class="os-panel os-panel-amplio">
+                                <div class="os-panel-titulo"><div><span class="os-etiqueta">SERVICIOS VINCULADOS (EJEMPLO)</span><h4>Distribución del almacenamiento</h4></div></div>
+                                <ul class="os-lista-servicios">
+                                    <li><span class="os-servicio-icono drive"><i class="fa-brands fa-google-drive" aria-hidden="true"></i></span><span><strong>Google Drive</strong><small>Documentos personales</small></span><div class="os-servicio-barra"><i style="width:68%"></i></div><b>15 GB</b></li>
+                                    <li><span class="os-servicio-icono one"><i class="fa-brands fa-windows" aria-hidden="true"></i></span><span><strong>OneDrive</strong><small>Archivos de trabajo</small></span><div class="os-servicio-barra"><i style="width:48%"></i></div><b>8 GB</b></li>
+                                    <li><span class="os-servicio-icono drop"><i class="fa-brands fa-dropbox" aria-hidden="true"></i></span><span><strong>Dropbox</strong><small>Elementos compartidos</small></span><div class="os-servicio-barra"><i style="width:35%"></i></div><b>5 GB</b></li>
+                                    <li><span class="os-servicio-icono local"><i class="fa-solid fa-hard-drive" aria-hidden="true"></i></span><span><strong>Otros</strong><small>Almacenamiento local</small></span><div class="os-servicio-barra"><i style="width:18%"></i></div><b>2 GB</b></li>
+                                </ul>
+                                <p class="os-aviso-demo"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> No hay cuentas conectadas; estos valores solo ilustran la interfaz.</p>
+                            </section>
+                        </div>
+
+                        <div class="os-vista os-vista-interior" data-os-panel="copias" hidden>
+                            <div class="os-vista-cabecera">
+                                <div><span class="os-etiqueta">PLANIFICACIÓN</span><h4>Copias de seguridad</h4><p>Una guía visual para ayudarte a pensar tu estrategia de respaldo.</p></div>
+                                <span class="os-demo-etiqueta"><i class="fa-solid fa-flask" aria-hidden="true"></i> Ejemplo</span>
+                            </div>
+                            <div class="os-copia-estado">
+                                <span class="os-acceso-icono verde"><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i></span>
+                                <div><small>ESTADO ILUSTRATIVO</small><strong>Plan de respaldo por revisar</strong><p>La demostración no ejecuta ni programa copias.</p></div>
+                                <span class="os-estado-archivo">Recomendación</span>
+                            </div>
+                            <div class="os-paneles os-copias-grid">
+                                <section class="os-panel"><div class="os-panel-titulo"><div><span class="os-etiqueta">LISTA DE CONTROL</span><h4>Hábitos recomendados</h4></div></div>
+                                    <ul class="os-lista-control">
+                                        <li><i class="fa-solid fa-circle-check resultado-ok" aria-hidden="true"></i><span>Definir qué archivos son prioritarios.<small>Identificá primero la información que no podés reemplazar.</small></span></li>
+                                        <li><i class="fa-solid fa-circle-check resultado-ok" aria-hidden="true"></i><span>Mantener una copia en otro dispositivo o ubicación.<small>Una copia separada ofrece protección adicional.</small></span></li>
+                                        <li><i class="fa-solid fa-circle-check resultado-ok" aria-hidden="true"></i><span>Probar la restauración de una copia.<small>Verificá que los archivos puedan recuperarse correctamente.</small></span></li>
+                                        <li><i class="fa-solid fa-circle-check resultado-ok" aria-hidden="true"></i><span>Revisar periódicamente el plan.<small>Ajustalo cuando cambien tus necesidades.</small></span></li>
+                                    </ul>
+                                </section>
+                                <section class="os-panel"><div class="os-panel-titulo"><div><span class="os-etiqueta">FRECUENCIA DE EJEMPLO</span><h4>Calendario sugerido</h4></div></div>
+                                    <div class="os-calendario"><span><i class="fa-regular fa-calendar" aria-hidden="true"></i> Documentos importantes</span><strong>Semanal</strong></div>
+                                    <div class="os-calendario"><span><i class="fa-regular fa-calendar" aria-hidden="true"></i> Fotos y recuerdos</span><strong>Mensual</strong></div>
+                                    <div class="os-calendario"><span><i class="fa-regular fa-calendar" aria-hidden="true"></i> Copia completa</span><strong>A definir</strong></div>
+                                    <p class="os-aviso-demo"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> La frecuencia depende del tipo de archivos y de cuánto cambien.</p>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div class="os-vista os-vista-interior" data-os-panel="informes" hidden>
+                            <div class="os-vista-cabecera">
+                                <div><span class="os-etiqueta">ACTIVIDAD</span><h4>Informes</h4><p>Resumen de actividad de demostración y comprobaciones de ejemplo.</p></div>
+                                <span class="os-demo-etiqueta"><i class="fa-solid fa-flask" aria-hidden="true"></i> Vista ficticia</span>
+                            </div>
+                            <div class="os-resumen-mini os-resumen-informes">
+                                <article><i class="fa-solid fa-folder archivo-azul" aria-hidden="true"></i><span><strong>25</strong><small>Archivos organizados</small></span></article>
+                                <article><i class="fa-solid fa-cloud-arrow-up archivo-verde" aria-hidden="true"></i><span><strong>3</strong><small>Copias planificadas</small></span></article>
+                                <article><i class="fa-solid fa-shield-heart archivo-violeta" aria-hidden="true"></i><span><strong>6</strong><small>Comprobaciones</small></span></article>
+                            </div>
+                            <section class="os-panel os-panel-amplio">
+                                <div class="os-panel-titulo"><div><span class="os-etiqueta">HISTORIAL RECIENTE</span><h4>Actividad del espacio de ejemplo</h4></div></div>
+                                <ul class="os-historial">
+                                    <li><span class="os-historial-icono verde"><i class="fa-solid fa-check" aria-hidden="true"></i></span><span><strong>Revisión de copias</strong><small>Comprobación de muestra · Hoy, 10:30</small></span><b class="texto-ok">Completada</b></li>
+                                    <li><span class="os-historial-icono azul"><i class="fa-solid fa-folder-tree" aria-hidden="true"></i></span><span><strong>Organización de documentos</strong><small>Clasificación de muestra · Ayer, 15:15</small></span><b class="texto-ok">Completada</b></li>
+                                    <li><span class="os-historial-icono naranja"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span><span><strong>Recomendación pendiente</strong><small>Revisar archivos sin respaldo · Hace 3 días</small></span><b class="texto-aviso">Pendiente</b></li>
+                                </ul>
+                                <p class="os-aviso-demo"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> La actividad y las fechas no corresponden a comprobaciones reales.</p>
+                            </section>
+                        </div>
+
+                        <div class="os-vista os-vista-interior" data-os-panel="configuracion" hidden>
+                            <div class="os-vista-cabecera">
+                                <div><span class="os-etiqueta">PREFERENCIAS</span><h4>Configuración</h4><p>Opciones de muestra para personalizar una futura experiencia GuardaData.</p></div>
+                                <span class="os-demo-etiqueta"><i class="fa-solid fa-flask" aria-hidden="true"></i> Solo demostración</span>
+                            </div>
+                            <section class="os-panel os-panel-amplio os-preferencias">
+                                <div class="os-preferencia"><span class="os-preferencia-icono"><i class="fa-solid fa-user" aria-hidden="true"></i></span><span><strong>Perfil</strong><small>La cuenta de usuario no está conectada.</small></span><b>Invitado</b></div>
+                                <div class="os-preferencia"><span class="os-preferencia-icono"><i class="fa-solid fa-bell" aria-hidden="true"></i></span><span><strong>Notificaciones</strong><small>Preferencias para avisos sobre recomendaciones.</small></span><b>No configuradas</b></div>
+                                <div class="os-preferencia"><span class="os-preferencia-icono"><i class="fa-solid fa-tags" aria-hidden="true"></i></span><span><strong>Organización</strong><small>Etiquetas y categorías personalizadas.</small></span><b>Configuración de ejemplo</b></div>
+                                <div class="os-preferencia"><span class="os-preferencia-icono"><i class="fa-solid fa-link" aria-hidden="true"></i></span><span><strong>Servicios conectados</strong><small>Vinculá servicios compatibles solo cuando esta opción esté disponible.</small></span><b>Ninguno</b></div>
+                                <div class="os-preferencia"><span class="os-preferencia-icono"><i class="fa-solid fa-lock" aria-hidden="true"></i></span><span><strong>Privacidad y seguridad</strong><small>Conocé cómo se protegería tu información.</small></span><b>Modo demostración</b></div>
+                            </section>
+                        </div>
+                        <p class="os-estado" id="os-estado" aria-live="polite"></p>
+                    </div>
+                </div>
+
+                <div class="planes-guardadata" id="planes-guardadata">
+                    <div class="planes-guardadata-intro revelar">
+                        <span class="subtitulo">HERRAMIENTAS OPCIONALES</span>
+                        <h3>Elegí solo la ayuda que te sirva.</h3>
+                        <p>No necesitás un plan para solicitar los servicios de S.G.D. Estas herramientas son complementarias.</p>
+                    </div>
+                    <div class="planes-guardadata-grid">
+                        <article class="plan-guardadata revelar">
+                            <div class="plan-guardadata-cabecera"><span class="plan-guardadata-icono"><i class="fa-solid fa-folder-open" aria-hidden="true"></i></span><span class="plan-guardadata-etiqueta">GRATIS</span></div>
+                            <h3>GuardaData Free</h3>
+                            <p class="plan-guardadata-descripcion">Para conocer la herramienta y organizar archivos básicos.</p>
+                            <ul>
+                                <li>Escritorio virtual y administrador básico de archivos.</li>
+                                <li>IA-Organizer con clasificaciones y sugerencias mensuales limitadas.</li>
+                                <li>Búsqueda básica de archivos y etiquetas.</li>
+                                <li>DiagnosData con diagnóstico inicial y recomendaciones básicas.</li>
+                                <li>Guías de organización y copias de seguridad.</li>
+                            </ul>
+                            <a class="plan-guardadata-boton" href="#escritorio">Explorar la demostración <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </article>
+                        <article class="plan-guardadata plan-guardadata-premium revelar">
+                            <div class="plan-guardadata-cabecera"><span class="plan-guardadata-icono"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i></span><span class="plan-guardadata-etiqueta">DE PAGO · OPCIONAL</span></div>
+                            <h3>GuardaClaro Premium</h3>
+                            <p class="plan-guardadata-descripcion">Para profesionales y comercios que gestionan muchos documentos.</p>
+                            <ul>
+                                <li>Mayor cantidad de clasificaciones y búsquedas con IA.</li>
+                                <li>Búsqueda semántica avanzada y sugerencias de organización más completas.</li>
+                                <li>Informes de DiagnosData más detallados y seguimiento de comprobaciones.</li>
+                                <li>Historial de diagnósticos y seguimiento de recomendaciones.</li>
+                                <li>Opciones de organización e integración con servicios compatibles, si se desarrollan.</li>
+                                <li>Beneficios en asistencia técnica según el plan contratado.</li>
+                            </ul>
+                            <a class="plan-guardadata-boton" href="index.html#contacto">Consultar disponibilidad <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </article>
+                    </div>
+                    <p class="guardadata-nota revelar"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> La pantalla es una maqueta interactiva: los archivos, el uso de espacio y los resultados mostrados son ejemplos. No se conectan cuentas ni se cargan documentos.</p>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+    <footer><div class="contenedor"><p>© 2026 S.G.D. - S.R.L. — Seguridad Global de Datos.</p></div></footer>
+    <script src="static-auth.js?v=20261030-static1"></script>
+    <script src="guardadata.js?v=20261030-public-demo"></script>
+</body>
+</html>

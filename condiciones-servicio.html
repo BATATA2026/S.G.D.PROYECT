@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="page-legal" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Condiciones informativas para solicitar servicios de S.G.D.">
+    <title>Condiciones de servicio | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            if (localStorage.getItem("tema-sgd") === "oscuro") document.body.classList.add("tema-oscuro");
+        } catch {}
+    </script>
+    <header class="legal-header">
+        <a class="legal-marca revelar" href="index.html" aria-label="S.G.D., inicio"><span class="marca-s">S</span>.<span class="marca-g">G</span>.<span class="marca-d">D</span>.</a>
+        <div class="legal-acciones revelar">
+            <button class="legal-tema" id="boton-tema" type="button" aria-label="Cambiar a tema oscuro" aria-pressed="false" title="Cambiar tema"><span id="icono-tema" aria-hidden="true">☾</span></button>
+            <a class="legal-volver" href="index.html">Volver al inicio</a>
+        </div>
+    </header>
+    <main class="legal-contenido">
+        <p class="legal-eyebrow revelar">Información legal · Actualizada el 15/10/2026</p>
+        <h1 class="revelar">Condiciones del servicio</h1>
+        <p class="legal-bajada revelar">Reglas básicas para pedir un diagnóstico, recibir un presupuesto y autorizar una tarea.</p>
+
+        <section class="legal-seccion revelar">
+            <h2>Solicitud y aceptación</h2>
+            <p>Enviar un formulario o pedir una fecha no confirma una contratación ni obliga a iniciar un trabajo. Antes de comenzar, S.G.D. debe revisar el caso y comunicar por escrito el alcance, el precio, el plazo y las condiciones; el trabajo comienza únicamente cuando ambas partes lo aceptan expresamente.</p>
+            <p>No se realizarán tareas adicionales fuera del alcance acordado sin informar previamente su costo y obtener aprobación.</p>
+        </section>
+
+        <section class="legal-seccion revelar">
+            <h2>Archivos privados o sensibles</h2>
+            <p>Este sitio no recibe ni analiza archivos adjuntos. Si un servicio técnico previamente autorizado expone archivos privados, la revisión se limitará a lo necesario para esa tarea. No incluyas datos sensibles en los formularios ni entregues contraseñas de cuentas personales.</p>
+            <p>Ante indicios objetivos de una actividad posiblemente delictiva, S.G.D. podrá detener la intervención, proteger el dispositivo y limitar el acceso únicamente en lo necesario para evitar daños o preservar evidencia. También podrá rechazar nuevas solicitudes relacionadas con ese uso, con una revisión humana del caso.</p>
+            <p>La información se comunicará a una autoridad competente cuando exista una obligación legal, una orden válida o una base jurídica concreta que lo permita. No se promete una denuncia automática ni se reportan archivos por el solo hecho de ser privados o sensibles. La Ley 26.388 incorporó delitos informáticos al Código Penal, pero no convierte este sitio en un sistema de vigilancia.</p>
+        </section>
+
+        <section class="legal-seccion revelar">
+            <h2>Pagos, cancelaciones y reintegros</h2>
+            <p>La solicitud de presupuesto no genera un cobro. Cualquier importe, anticipo y condición de pago debe informarse y aprobarse antes de contratar. La suspensión de un servicio no genera por sí sola un reintegro automático por el trabajo ya realizado, pero no se aplicará una renuncia general a devoluciones ni se eliminarán los derechos que correspondan por ley.</p>
+            <p>En contrataciones alcanzadas por el artículo 34 de la Ley 24.240, el derecho de revocar la aceptación no puede dispensarse ni renunciarse. Ante incumplimientos también pueden corresponder los remedios previstos por la normativa de defensa del consumidor. Cada caso se evaluará según la ley vigente y las condiciones efectivamente aceptadas.</p>
+        </section>
+
+        <section class="legal-seccion revelar">
+            <h2>Suspensión de solicitudes y acceso a datos</h2>
+            <p>Si existe una razón objetiva y documentada para impedir el uso del servicio con fines ilícitos o para proteger a personas, datos o equipos, S.G.D. podrá rechazar nuevas solicitudes o suspender la prestación, informando el alcance de la medida cuando la ley lo permita.</p>
+            <p>La restricción del servicio no cancela el derecho de la persona titular a solicitar acceso, rectificación o supresión de sus datos personales conforme a la Ley 25.326. Cualquier limitación requerirá una norma u orden competente aplicable; se protegerán los datos de terceros y la información cuya reserva haya sido dispuesta legalmente.</p>
+        </section>
+
+        <section class="legal-seccion revelar">
+            <h2>Alcance técnico</h2>
+            <p>El presupuesto es una estimación hasta que se revise el dispositivo y se confirme por escrito. La recuperación de archivos puede depender del estado del equipo, del soporte y de otros factores técnicos; no se garantiza un resultado que no pueda determinarse previamente.</p>
+            <p>La persona usuaria debe tener derecho a solicitar la revisión del dispositivo y realizar una copia de seguridad cuando sea posible. S.G.D. debe comunicar los riesgos relevantes antes de cualquier intervención.</p>
+        </section>
+
+        <section class="legal-seccion revelar">
+            <h2>Normativa aplicable</h2>
+            <p>Estas condiciones informativas no sustituyen un contrato individual ni limitan normas imperativas. Se interpretan junto con la Ley 24.240 de Defensa del Consumidor, la Ley 25.326 de Protección de Datos Personales y demás normativa aplicable en Argentina.</p>
+            <ul>
+                <li><a href="https://www.argentina.gob.ar/normativa/nacional/ley-24240-638/actualizacion" target="_blank" rel="noopener noreferrer">Texto actualizado de la Ley 24.240</a></li>
+                <li><a href="https://www.argentina.gob.ar/normativa/nacional/ley-25326-64790/actualizacion" target="_blank" rel="noopener noreferrer">Texto actualizado de la Ley 25.326</a></li>
+                <li><a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/140000-144999/141790/norma.htm" target="_blank" rel="noopener noreferrer">Ley 26.388, delitos informáticos y reformas al Código Penal</a></li>
+            </ul>
+        </section>
+
+        <p class="legal-contacto revelar">Consultas: <a href="mailto:contactossgd@gmail.com">contactossgd@gmail.com</a>. La razón social, CUIT y domicilio legal del prestador aún deben completarse antes de aceptar contrataciones.</p>
+    </main>
+    <footer class="legal-footer revelar">© 2026 S.G.D. - S.R.L. · Seguridad Global de Datos</footer>
+    <script src="script.js"></script>
+</body>
+</html>

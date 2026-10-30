@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html class="page-diagnostico" lang="es">
+<head>
+    <link rel="stylesheet" href="styles.css?v=20261028-1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitar diagnóstico | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+
+    <meta name="description"
+          content="Solicitá un diagnóstico de Seguridad Global de Datos.">
+
+    
+</head>
+
+<body>
+    <script>
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            const temaGuardado = localStorage.getItem("tema-sgd");
+            if (temaGuardado) {
+                document.body.classList.toggle("tema-oscuro", temaGuardado === "oscuro");
+                document.body.setAttribute("data-theme", temaGuardado === "oscuro" ? "dark" : "light");
+            }
+        } catch {}
+    </script>
+
+    <nav>
+        <div class="contenedor nav">
+
+            <a class="marca" href="index.html" aria-label="Volver al inicio">
+                <span class="s">S</span>.<span class="g">G</span>.<span class="d">D</span>.
+            </a>
+
+            <div class="nav-derecha">
+                <button
+                    id="boton-tema"
+                    class="tema-btn"
+                    type="button"
+                    aria-label="Cambiar a tema oscuro"
+                    title="Cambiar tema">
+                    🌙
+                </button>
+
+                <a class="volver" href="index.html">
+                    ← Volver al inicio
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <section class="diagnostico-acceso" id="diagnostico-acceso" aria-live="polite">
+        <div class="contenedor">
+            <div class="diagnostico-acceso-tarjeta">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                <div>
+                    <h2>Demostración pública</h2>
+                    <p>No necesitás iniciar sesión. La información del diagnóstico queda temporalmente en este navegador y no se envía al equipo de S.G.D.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <header class="cabecera revelar">
+        <span class="etiqueta">SERVICIO TÉCNICO S.G.D.</span>
+
+        <h1>Solicitar diagnóstico</h1>
+
+        <p>
+            Contanos qué problema presenta tu información y nuestro equipo
+            analizará tu solicitud para determinar el procedimiento adecuado.
+        </p>
+    </header>
+
+    <main class="contenedor contenido" id="diagnostico-contenido">
+
+        <aside class="informacion revelar">
+            <h2>¿Qué hacemos?</h2>
+
+            <p>
+                Nuestro servicio está orientado a la protección, resguardo
+                y organización de datos locales.
+            </p>
+
+            <div class="beneficio">
+                <div class="beneficio-icono">🔍</div>
+                <div>
+                    <h3>Diagnóstico</h3>
+                    <p>
+                        Analizamos la situación antes de realizar cualquier
+                        intervención.
+                    </p>
+                </div>
+            </div>
+
+            <div class="beneficio">
+                <div class="beneficio-icono">🛡️</div>
+                <div>
+                    <h3>Protección</h3>
+                    <p>
+                        Priorizamos el resguardo de la información del cliente.
+                    </p>
+                </div>
+            </div>
+
+            <div class="beneficio">
+                <div class="beneficio-icono">💾</div>
+                <div>
+                    <h3>Resguardo</h3>
+                    <p>
+                        Evaluamos alternativas de respaldo para reducir riesgos.
+                    </p>
+                </div>
+            </div>
+
+            <div class="beneficio">
+                <div class="beneficio-icono">📁</div>
+                <div>
+                    <h3>Organización</h3>
+                    <p>
+                        Mejoramos la organización lógica para facilitar el acceso
+                        a los datos.
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <section class="formulario revelar">
+            <div id="formulario-contenido">
+                <h2>Datos de la consulta</h2>
+
+                <p class="descripcion-formulario">
+                    Completá los siguientes campos para que podamos conocer
+                    tu situación.
+                </p>
+                <p id="servicios-seleccionados-resumen" class="descripcion-formulario" hidden></p>
+
+                <form id="formulario">
+                    <div class="fila">
+                        <div class="campo">
+                            <label for="nombre">Nombre y apellido</label>
+                            <input type="text" id="nombre" name="nombre"
+                                   placeholder="Ej. Juan Pérez" required>
+                        </div>
+
+                        <div class="campo">
+                            <label for="correo">Correo electrónico</label>
+                            <input type="email" id="correo" name="correo"
+                                   placeholder="ejemplo@gmail.com" required>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label for="dispositivo">Dispositivo</label>
+                        <select id="dispositivo" name="dispositivo" required>
+                            <option value="">Seleccioná una opción</option>
+                            <option>PC de escritorio</option>
+                            <option>Notebook</option>
+                            <option>Disco externo</option>
+                            <option>Pendrive</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="problema">¿Cuál es el problema?</label>
+                        <select id="problema" name="problema" required>
+                            <option value="">Seleccioná una opción</option>
+                            <option>Virus o malware</option>
+                            <option>Archivos eliminados</option>
+                            <option>Problemas de acceso a archivos</option>
+                            <option>Falta de respaldo</option>
+                            <option>Organización de archivos</option>
+                            <option>Otro problema</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="descripcion">Descripción del problema</label>
+                        <textarea id="descripcion" name="descripcion"
+                                  placeholder="Contanos brevemente qué sucede..."
+                                  required></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <label for="urgencia">¿Cuándo comenzó el problema?</label>
+                        <select id="urgencia" name="urgencia" required>
+                            <option value="">Seleccioná una opción</option>
+                            <option>Hoy</option>
+                            <option>Hace unos días</option>
+                            <option>Hace varias semanas</option>
+                            <option>No estoy seguro</option>
+                        </select>
+                    </div>
+
+                    <div class="consentimientos-legales">
+                        <label class="privacidad">
+                            <input type="checkbox" name="consentimientoSensible" value="acepto" required>
+                            <span>Entiendo que el diagnóstico puede exponer archivos privados o sensibles y autorizo una revisión limitada a lo necesario para el servicio solicitado.</span>
+                        </label>
+                        <label class="privacidad">
+                            <input type="checkbox" name="avisoAutoridades" value="leido" required>
+                            <span>Leí que solo ante indicios concretos, y cuando la ley lo exija o autorice, la información podría comunicarse a una autoridad competente.</span>
+                        </label>
+                        <label class="privacidad">
+                            <input type="checkbox" name="aceptacionCondiciones" value="leido" required>
+                            <span>Leí la <a href="privacidad.html" target="_blank" rel="noopener noreferrer">Política de privacidad</a> y las <a href="condiciones-servicio.html" target="_blank" rel="noopener noreferrer">Condiciones</a>. La solicitud no contrata el servicio y se respetan los derechos de cancelación y reintegro establecidos por ley.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="boton">
+                        Enviar solicitud de diagnóstico
+                    </button>
+                </form>
+            </div>
+
+            <div class="exito" id="mensaje-exito">
+                <div class="exito-icono">✓</div>
+
+                <h2>¡Diagnóstico preparado!</h2>
+
+                <p>
+                    La información queda temporalmente en este navegador. No se envía al equipo de S.G.D.; continuá para preparar el resumen de la solicitud.
+                </p>
+
+                <a href="solicitud-servicio.html" class="boton-volver">
+                    Continuar con fecha y pago
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <section class="invitacion-clientes revelar" aria-label="Compartir una reseña">
+        <p>Puedes dejarnos un comentario junto al resto de nuestros clientes y darnos tus estrellas que nos ayuda a poder llegar a más gente y que puedan confiar en nosotros. Y recuerda ¡S.G.D tu información en buenas manos!</p>
+        <a href="clientes.html#dejar-comentario" class="boton-comentario">Dejar mi comentario</a>
+    </section>
+
+    <footer class="revelar">
+        <div class="contenedor">
+            © 2026 S.G.D. - S.R.L. — Seguridad Global de Datos.
+        </div>
+    </footer>
+
+    <button id="volver-arriba" aria-label="Volver arriba">↑</button>
+
+    
+
+    <script src="static-auth.js?v=20261030-static1"></script>
+    <script src="script.js?v=20261030-public-demo"></script>
+</body>
+</html>

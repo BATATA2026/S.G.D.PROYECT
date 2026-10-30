@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="page-solicitud-servicio" lang="es">
+<head>
+    <link rel="stylesheet" href="styles.css?v=20261020-2">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coordina la fecha y el medio de pago de tu servicio S.G.D.">
+    <title>Fecha y pago | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+</head>
+<body>
+    <script>
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            const temaGuardado = localStorage.getItem("tema-sgd");
+            if (temaGuardado) {
+                document.body.classList.toggle("tema-oscuro", temaGuardado === "oscuro");
+                document.body.setAttribute("data-theme", temaGuardado === "oscuro" ? "dark" : "light");
+            }
+        } catch {}
+    </script>
+    <header class="barra">
+        <nav class="contenedor nav" aria-label="Navegación principal">
+            <a class="marca" href="index.html" aria-label="S.G.D., inicio">
+                <span class="marca-s">S</span>.<span class="marca-g">G</span>.<span class="marca-d">D</span>
+            </a>
+            <div class="nav-acciones">
+                <button class="tema-btn" id="boton-tema" type="button" aria-label="Cambiar a tema oscuro" title="Cambiar tema">
+                    <i id="icono-tema" class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+                <a class="enlace-inicio" href="index.html">Inicio</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+        <header class="intro revelar">
+            <span class="eyebrow">S.G.D. · Servicio</span>
+            <h1>Fecha y medio de pago</h1>
+            <p>Indicá cuándo querés realizar el servicio y cómo preferís abonarlo. El presupuesto final se confirma después de revisar el diagnóstico.</p>
+            <p class="aviso-estatico">Este formulario prepara la solicitud en tu dispositivo. No procesa cobros ni envía correos automáticamente.</p>
+        </header>
+
+        <div class="layout" id="panel-solicitud">
+            <form class="formulario revelar" id="formulario-servicio">
+                <fieldset>
+                    <legend>1. Fecha del servicio</legend>
+                    <div class="campos" id="fecha-servicio-unico">
+                        <div class="campo">
+                            <label for="dias-servicio">¿Dentro de cuántos días lo solicitás?</label>
+                            <input id="dias-servicio" name="dias" type="number" min="1" max="90" value="7" required>
+                        </div>
+                        <div class="campo">
+                            <label>Fecha estimada</label>
+                            <p class="detalle-pago" id="fecha-estimada" aria-live="polite"></p>
+                        </div>
+                    </div>
+                    <p class="ayuda">Podés elegir entre 1 y 90 días. La fecha queda sujeta a coordinación con el equipo.</p>
+                    <div id="fechas-servicios-multiples" hidden>
+                        <p class="ayuda">Elegí una fecha para cada servicio. Los importes se calculan por separado y la promoción vigente al solicitar se conserva para las fechas acordadas.</p>
+                        <div id="lista-fechas-servicios"></div>
+                        <div class="detalle-pago" id="resumen-importes-servicios" aria-live="polite"></div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>2. Método y datos de pago</legend>
+                    <div class="segmentos" role="radiogroup" aria-label="Modalidad de pago">
+                        <label class="segmento">
+                            <input type="radio" name="modalidad" value="digital" checked>
+                            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                            <span>Digital</span>
+                        </label>
+                        <label class="segmento">
+                            <input type="radio" name="modalidad" value="presencial">
+                            <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+                            <span>Presencial</span>
+                        </label>
+                    </div>
+
+                    <div class="campos" style="margin-top: 15px;">
+                        <div class="campo">
+                            <label for="medio-digital">Medio de pago</label>
+                            <select id="medio-digital" name="medioDigital">
+                                <option value="Transferencia bancaria">Transferencia bancaria</option>
+                                <option value="Billetera digital">Billetera digital</option>
+                                <option value="Tarjeta de débito o crédito">Tarjeta de débito o crédito</option>
+                            </select>
+                            <select id="medio-presencial" name="medioPresencial" hidden>
+                                <option value="Efectivo en persona">Efectivo en persona</option>
+                                <option value="Tarjeta en persona">Tarjeta en persona</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="cuotas">Forma de pago</label>
+                            <select id="cuotas" name="cuotas">
+                                <option value="1">Un solo pago</option>
+                                <option value="3">3 cuotas</option>
+                                <option value="6">6 cuotas</option>
+                                <option value="12">12 cuotas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="detalle-pago" id="detalle-pago" aria-live="polite"></div>
+                    <p class="ayuda">Las cuotas y los medios disponibles se confirman al aprobar el presupuesto. No ingreses números ni claves de tarjetas en este sitio.</p>
+
+                    <div class="campos" style="margin-top: 15px;">
+                        <div class="campo">
+                            <label for="titular">Nombre para el comprobante</label>
+                            <input id="titular" name="titular" type="text" autocomplete="name" required>
+                        </div>
+                        <div class="campo">
+                            <label for="correo-contacto">Correo de contacto</label>
+                            <input id="correo-contacto" name="correo" type="email" autocomplete="email" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="consentimientos-legales">
+                    <label class="consentimiento">
+                        <input type="checkbox" name="consentimientoSensible" value="acepto" required>
+                        <span>Autorizo una revisión limitada de archivos privados o sensibles solo en lo necesario para el servicio solicitado.</span>
+                    </label>
+                    <label class="consentimiento">
+                        <input type="checkbox" name="avisoAutoridades" value="leido" required>
+                        <span>Leí que la comunicación a autoridades solo se hará ante indicios concretos y cuando la ley lo exija o autorice.</span>
+                    </label>
+                    <label class="consentimiento">
+                        <input type="checkbox" name="aceptacionCondiciones" value="leido" required>
+                        <span>Leí la <a href="privacidad.html" target="_blank" rel="noopener noreferrer">Política de privacidad</a> y las <a href="condiciones-servicio.html" target="_blank" rel="noopener noreferrer">Condiciones</a>; la solicitud no confirma la contratación y se mantienen los derechos legales de cancelación y reintegro.</span>
+                    </label>
+                </div>
+                <label class="consentimiento">
+                    <input id="aceptar-presupuesto" type="checkbox" required>
+                    <span>Entiendo que el monto es aproximado y que la solicitud de fecha no confirma el servicio ni realiza un cobro.</span>
+                </label>
+                <button class="boton-enviar" type="submit">Preparar solicitud</button>
+                <p class="estado" id="estado-formulario" role="status" aria-live="polite"></p>
+            </form>
+
+            <aside class="resumen revelar" aria-labelledby="titulo-resumen">
+                <h2 id="titulo-resumen">Resumen del servicio</h2>
+                <dl>
+                    <div class="resumen-dato">
+                        <dt>Servicio estimado</dt>
+                        <dd id="servicio-resumen">Diagnóstico y asesoramiento</dd>
+                    </div>
+                    <div class="resumen-dato">
+                        <dt>Problema informado</dt>
+                        <dd id="problema-resumen">Sin diagnóstico vinculado</dd>
+                    </div>
+                    <div class="resumen-dato">
+                        <dt>Precio original aproximado</dt>
+                        <dd class="precio-original" id="precio-original"></dd>
+                    </div>
+                    <div class="resumen-dato">
+                        <dt>Descuento promocional (10%)</dt>
+                        <dd id="descuento-resumen"></dd>
+                    </div>
+                    <div class="resumen-dato">
+                        <dt>Estimación a pagar</dt>
+                        <dd class="precio-actual" id="precio-actual"></dd>
+                    </div>
+                </dl>
+                <p class="nota-promo" id="nota-promocion"></p>
+                <p class="alerta" id="aviso-diagnostico" hidden>No se encontró un diagnóstico en esta sesión. Podés volver al inicio para comenzar una solicitud.</p>
+            </aside>
+        </div>
+
+        <section class="confirmacion revelar" id="confirmacion" hidden aria-live="polite">
+            <span class="eyebrow">Solicitud preparada</span>
+            <h2>Revisá y enviá los datos</h2>
+            <p id="texto-confirmacion"></p>
+            <div class="acciones-confirmacion">
+                <a class="boton-correo" id="enlace-correo" href="mailto:contactossgd@gmail.com">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> Abrir correo para enviar
+                </a>
+                <a class="boton-inicio" href="index.html">Volver al inicio</a>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <script src="static-auth.js?v=20261030-static1"></script>
+    <script src="script.js?v=20261020-3"></script>
+</body>
+</html>

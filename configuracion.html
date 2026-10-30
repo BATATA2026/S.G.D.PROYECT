@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="page-configuracion" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Configuración de cuenta, dispositivos y solicitudes S.G.D.">
+    <title>Configuración de cuenta | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            if (localStorage.getItem("tema-sgd") === "oscuro") document.body.classList.add("tema-oscuro");
+        } catch {}
+    </script>
+    <header class="config-barra revelar">
+        <a class="config-marca" href="index.html" aria-label="S.G.D., inicio"><span class="marca-s">S</span>.<span class="marca-g">G</span>.<span class="marca-d">D</span>.</a>
+        <div class="config-acciones">
+            <button class="config-tema" id="boton-tema" type="button" aria-label="Cambiar a tema oscuro" aria-pressed="false" title="Cambiar tema"><span id="icono-tema" aria-hidden="true">☾</span></button>
+            <a class="config-volver" href="index.html">Volver al inicio</a>
+        </div>
+    </header>
+
+    <main class="config-contenido">
+        <p class="config-eyebrow revelar">Cuenta · Preferencias</p>
+        <h1 class="revelar">Configuración</h1>
+        <p class="config-bajada revelar">Administrá el dispositivo actual, tus solicitudes y la contraseña de este perfil.</p>
+        <p class="config-aviso revelar">El perfil, los dispositivos y el historial se guardan en la base de datos local de S.G.D. El tema y las animaciones se conservan en este navegador. Los estados son un seguimiento personal y no confirman una asignación ni la finalización del servicio.</p>
+
+        <section class="config-seccion revelar" aria-labelledby="titulo-preferencias">
+            <div class="config-seccion-cabecera">
+                <div>
+                    <p class="config-kicker">Experiencia</p>
+                    <h2 id="titulo-preferencias">Animaciones</h2>
+                </div>
+            </div>
+            <label class="config-toggle" for="preferencia-animaciones">
+                <span><strong>Activar animaciones</strong><small>Incluye movimientos de la página y la escena de cuenta.</small></span>
+                <input id="preferencia-animaciones" type="checkbox" role="switch" checked>
+            </label>
+        </section>
+
+        <section class="config-seccion revelar" aria-labelledby="titulo-dispositivos">
+            <div class="config-seccion-cabecera">
+                <div>
+                    <p class="config-kicker">Acceso</p>
+                    <h2 id="titulo-dispositivos">Dispositivos</h2>
+                </div>
+            </div>
+            <div id="lista-dispositivos" class="config-lista"></div>
+            <p class="config-ayuda">La lista contiene los dispositivos asociados a esta cuenta que hayan iniciado sesión.</p>
+            <button class="config-boton-secundario" id="cerrar-sesion-dispositivo" type="button">Cerrar sesión en este dispositivo</button>
+        </section>
+
+        <section class="config-seccion revelar" aria-labelledby="titulo-servicios">
+            <div class="config-seccion-cabecera">
+                <div>
+                    <p class="config-kicker">Seguimiento personal</p>
+                    <h2 id="titulo-servicios">Servicios e historial</h2>
+                </div>
+            </div>
+            <div class="config-pestanas" role="tablist" aria-label="Filtrar solicitudes">
+                <button type="button" role="tab" aria-selected="true" class="activa" data-filtro="historial">Historial</button>
+                <button type="button" role="tab" aria-selected="false" data-filtro="en_servicio">En servicio</button>
+                <button type="button" role="tab" aria-selected="false" data-filtro="completado">Cumplidos</button>
+            </div>
+            <div id="lista-servicios" class="config-lista" aria-live="polite"></div>
+            <p class="config-estado" id="estado-servicios" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="config-seccion revelar" aria-labelledby="titulo-password">
+            <div class="config-seccion-cabecera">
+                <div>
+                    <p class="config-kicker">Seguridad</p>
+                    <h2 id="titulo-password">Cambiar contraseña</h2>
+                </div>
+            </div>
+            <form id="form-cambiar-password" class="config-password-form">
+                <div class="config-campo">
+                    <label for="password-actual">Contraseña actual</label>
+                    <input id="password-actual" name="actual" type="password" autocomplete="current-password" required>
+                </div>
+                <div class="config-campo">
+                    <label for="password-nueva">Nueva contraseña</label>
+                    <input id="password-nueva" name="nueva" type="password" autocomplete="new-password" minlength="12" required>
+                    <small>Usá al menos 12 caracteres.</small>
+                </div>
+                <div class="config-campo">
+                    <label for="password-confirmar">Confirmar contraseña nueva</label>
+                    <input id="password-confirmar" name="confirmar" type="password" autocomplete="new-password" minlength="12" required>
+                </div>
+                <button class="config-boton-principal" type="submit">Actualizar contraseña</button>
+                <p class="config-estado" id="estado-password" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="config-footer revelar">© 2026 S.G.D. - S.R.L. · Seguridad Global de Datos</footer>
+    <script src="static-auth.js?v=20261030-static1"></script>
+    <script src="script.js"></script>
+</body>
+</html>

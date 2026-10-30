@@ -1,0 +1,665 @@
+
+<!DOCTYPE html>
+<html class="page-index" lang="es">
+<head>
+    <link rel="stylesheet" href="styles.css?v=20261028-3">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.G.D. | Seguridad Global de Datos</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+
+    <meta name="description"
+        content="S.G.D. - Seguridad Global de Datos. Protección, resguardo y organización de información.">
+
+</head>
+
+<body>
+    <script>
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            const temaGuardado = localStorage.getItem("tema-sgd");
+            if (temaGuardado) {
+                document.body.classList.toggle("tema-oscuro", temaGuardado === "oscuro");
+                document.body.setAttribute("data-theme", temaGuardado === "oscuro" ? "dark" : "light");
+            }
+        } catch {}
+    </script>
+    <div id="transicion-tema"></div>
+
+    <header class="encabezado-principal">
+        <nav class="nav contenedor">
+
+            <a href="#inicio" class="marca" aria-label="Ir al inicio">
+                <span class="s">S</span>.<span class="g">G</span>.<span class="d">D</span>.
+            </a>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+                ☰
+            </button>
+
+            <div class="links" id="links">
+                <a href="#problema">Problema</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#guardadata-promocion">GuardaData</a>
+                <a href="precios.html">Precios</a>
+                <a href="clientes.html">Comentarios</a>
+                <a href="#proceso">Proceso</a>
+                <a href="#equipo">Equipo</a>
+                <a href="#preguntas">Preguntas</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+
+            <div class="acciones-nav">
+                <button id="boton-tema" class="tema-btn" type="button" aria-label="Cambiar a tema oscuro" title="Cambiar tema">
+                    🌙
+                </button>
+
+                <button id="boton-cuenta" class="boton-cuenta" type="button" aria-controls="panel-cuenta" aria-expanded="false">
+                    <span class="avatar-perfil" aria-hidden="true">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span>Mi cuenta</span>
+                </button>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="cuenta-fondo" id="cuenta-fondo" hidden></div>
+    <aside class="cuenta-panel" id="panel-cuenta" role="dialog" aria-modal="true" aria-labelledby="titulo-panel-cuenta" aria-hidden="true" hidden>
+        <header class="cuenta-panel-cabecera">
+            <div>
+                <span class="cuenta-eyebrow">Área personal</span>
+                <h2 id="titulo-panel-cuenta">Mi cuenta</h2>
+            </div>
+            <button class="cuenta-cerrar" id="cerrar-panel-cuenta" type="button" aria-label="Cerrar panel de cuenta">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+        </header>
+
+        <section class="cuenta-identidad" aria-label="Datos de cuenta">
+            <div class="cuenta-avatar" aria-hidden="true"><i class="fa-solid fa-user"></i></div>
+            <div>
+                <p class="cuenta-estado" id="cuenta-estado">Sin sesión iniciada</p>
+                <strong id="cuenta-nombre">Visitante</strong>
+            </div>
+        </section>
+
+        <dl class="cuenta-datos">
+            <div><dt>Empresa</dt><dd id="cuenta-empresa">Sin vincular</dd></div>
+            <div><dt>Correo del perfil</dt><dd id="cuenta-correo">No disponible</dd></div>
+            <div><dt>Almacenamiento</dt><dd>Perfil e historial de demostración en este navegador</dd></div>
+        </dl>
+
+        <nav class="cuenta-acciones" aria-label="Acciones de cuenta">
+            <a class="cuenta-accion principal" id="abrir-login" href="cuenta.html">Iniciar sesión</a>
+            <a class="cuenta-accion" id="crear-cuenta" href="cuenta.html#registro">Crear cuenta</a>
+            <a class="cuenta-accion" id="abrir-configuracion" href="configuracion.html" hidden>Configuración</a>
+            <button class="cuenta-accion salida" id="cerrar-sesion" type="button" hidden>Cerrar sesión</button>
+        </nav>
+
+        <section class="cuenta-legal" aria-labelledby="titulo-cuenta-legal">
+            <h3 id="titulo-cuenta-legal">Privacidad y consentimiento</h3>
+            <p id="estado-consentimiento">No hay consentimientos de servicio registrados en este navegador.</p>
+            <a href="privacidad.html">Política de privacidad</a>
+            <a href="condiciones-servicio.html">Condiciones del servicio</a>
+        </section>
+    </aside>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="contenedor hero-grid">
+
+                <div class="hero-contenido animar">
+                    <span class="etiqueta etiqueta-marca"><span class="marca-amarillo">SEGURIDAD</span> <span class="marca-azul">GLOBAL</span> <span class="marca-verde">DE DATOS</span></span>
+
+                    <h1>
+                        Tu información,
+                        <span>en buenas manos.</span>
+                    </h1>
+
+                    <p>
+                        Servicio especializado en almacenamiento, resguardo
+                        y organización de datos, con un enfoque preventivo.
+                    </p>
+
+                    <div class="acciones">
+                        <a href="diagnostico.html" class="boton boton-principal">
+                            Solicitar diagnóstico
+                        </a>
+
+                        <a href="#servicios" class="boton boton-secundario">
+                            Ver servicios
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-logo animar">
+                    <div class="brillo"></div>
+
+                    <img src="73667.png"
+                        alt="Logo de Seguridad Global de Datos">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="barra-identidad">
+            <div class="contenedor identidad">
+                <span class="amarillo">ACCESO</span>
+                <span class="rojo">ACCIÓN</span>
+                <span class="verde">PROTECCIÓN</span>
+                <span class="azul">SEGURIDAD</span>
+            </div>
+        </section>
+
+        <section id="problema">
+            <div class="contenedor">
+
+                <div class="encabezado-seccion revelar">
+                    <span class="subtitulo">EL PROBLEMA</span>
+
+                    <h2>
+                        Los datos son importantes.
+                        Protegerlos también.
+                    </h2>
+
+                    <p>
+                        Una falla, un malware, un borrado accidental o la falta
+                        de respaldo pueden poner en riesgo información importante.
+                    </p>
+                </div>
+
+                <div class="tarjetas">
+
+                    <article class="tarjeta revelar">
+                        <div class="icono">💾</div>
+                        <h3>Fallas de almacenamiento</h3>
+                        <p>
+                            HDD, SSD, pendrives y discos externos pueden presentar
+                            problemas físicos o lógicos.
+                        </p>
+                    </article>
+
+                    <article class="tarjeta revelar">
+                        <div class="icono">🦠</div>
+                        <h3>Amenazas digitales</h3>
+                        <p>
+                            Los virus y otros tipos de malware pueden afectar
+                            el sistema y comprometer archivos.
+                        </p>
+                    </article>
+
+                    <article class="tarjeta revelar">
+                        <div class="icono">🛡️</div>
+                        <h3>Falta de respaldo</h3>
+                        <p>
+                            No contar con copias de seguridad aumenta el riesgo
+                            de perder información.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="fondo-suave">
+            <div class="contenedor">
+
+                <div class="encabezado-seccion revelar">
+                    <span class="subtitulo">SERVICIOS</span>
+
+                    <h2>
+                        Protegemos y organizamos
+                        tu información.
+                    </h2>
+
+                    <p>
+                        Trabajamos sobre el almacenamiento, resguardo y gestión
+                        de datos para mantenerlos accesibles y protegidos.
+                    </p>
+                </div>
+
+                <div class="servicios-grid">
+
+                    <article class="servicio revelar">
+                        <div class="icono">💾</div>
+                        <h3>Resguardo preventivo</h3>
+                        <p>
+                            Protegemos la información mediante copias de seguridad
+                            y planificación.
+                        </p>
+                        <ul>
+                            <li>Copias de seguridad</li>
+                            <li>Duplicación de información</li>
+                            <li>Planificación de respaldos</li>
+                        </ul>
+                    </article>
+
+                    <article class="servicio revelar">
+                        <div class="icono">🛡️</div>
+                        <h3>Seguridad y antivirus</h3>
+                        <p>
+                            Analizamos amenazas digitales y aplicamos medidas
+                            de protección.
+                        </p>
+                        <ul>
+                            <li>Análisis antivirus</li>
+                            <li>Eliminación de amenazas</li>
+                            <li>Tratamiento de archivos afectados</li>
+                        </ul>
+                    </article>
+
+                    <article class="servicio revelar">
+                        <div class="icono">📁</div>
+                        <h3>Organización y acceso</h3>
+                        <p>
+                            Organizamos y clasificamos la información para facilitar
+                            su acceso.
+                        </p>
+                        <ul>
+                            <li>Organización de carpetas</li>
+                            <li>Clasificación de información</li>
+                            <li>Migración y reorganización</li>
+                        </ul>
+                    </article>
+
+                    <article class="servicio revelar">
+                        <div class="icono">🔎</div>
+                        <h3>Diagnóstico y asesoramiento</h3>
+                        <p>
+                            Evaluamos cada situación y brindamos asesoramiento
+                            según las necesidades.
+                        </p>
+                        <ul>
+                            <li>Evaluación inicial</li>
+                            <li>Asesoramiento técnico</li>
+                            <li>Derivación especializada</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="proceso">
+            <div class="contenedor">
+
+                <div class="encabezado-seccion revelar">
+                    <span class="subtitulo">MÉTODO DE TRABAJO</span>
+
+                    <h2>
+                        Primero evaluamos.
+                        Después gestionamos.
+                    </h2>
+
+                    <p>
+                        Seguimos un procedimiento ordenado para proteger
+                        y gestionar la información.
+                    </p>
+                </div>
+
+                <div class="proceso-grid">
+
+                    <article class="paso revelar">
+                        <span>01</span>
+                        <h3>Diagnóstico</h3>
+                        <p>Analizamos el problema.</p>
+                    </article>
+
+                    <article class="paso revelar">
+                        <span>02</span>
+                        <h3>Resguardo</h3>
+                        <p>Protegemos los datos cuando sea posible.</p>
+                    </article>
+
+                    <article class="paso revelar">
+                        <span>03</span>
+                        <h3>Presupuesto</h3>
+                        <p>Informamos el costo del trabajo.</p>
+                    </article>
+
+                    <article class="paso revelar">
+                        <span>04</span>
+                        <h3>Gestión</h3>
+                        <p>Realizamos las tareas acordadas.</p>
+                    </article>
+
+                    <article class="paso revelar">
+                        <span>05</span>
+                        <h3>Verificación</h3>
+                        <p>Comprobamos el resultado final.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="equipo" class="fondo-suave">
+            <div class="contenedor">
+
+                <div class="encabezado-seccion revelar">
+                    <span class="subtitulo">NUESTRO EQUIPO</span>
+
+                    <h2>Personas detrás de S.G.D.</h2>
+
+                    <p>
+                        Un equipo organizado para brindar una atención clara
+                        y profesional.
+                    </p>
+                </div>
+
+                <div class="equipo-grid">
+
+                    <article class="miembro revelar">
+                        <div class="foto">
+                            <img src="facundo.jpeg" alt="Sánchez Facundo">
+                        </div>
+                        <h3>Sánchez Facundo</h3>
+                        <p>Gerente General y Representante Legal</p>
+                        <div class="redes-miembro">
+    <a href="https://www.instagram.com/nathankael01/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Instagram de Facundo">
+        <img src="instagram.webp" alt="Instagram">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100070201721237"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Facebook de Facundo">
+        <img src="facebook.webp" alt="Facebook">
+    </a>
+</div>
+                    </article>
+
+                    <article class="miembro revelar">
+                        <div class="foto">
+                            <img src="erik.jpeg" alt="Coronel Erik">
+                        </div>
+                        <h3>Coronel Erik</h3>
+                        <p>Jefe de Diagnóstico y Recuperación de Datos</p>
+<div class="redes-miembro">
+    <a href="https://www.instagram.com/noobik.exe/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Instagram de Erik">
+        <img src="instagram.webp" alt="Instagram">
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61570352348390"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Facebook de Coronel Erik">
+        <img src="facebook.webp" alt="Facebook">
+    </a>
+</div>
+                    </article>
+
+                    <article class="miembro revelar">
+                        <div class="foto">
+                            <img src="nahuel.jpeg" alt="Irala Nahuel">
+                        </div>
+                        <h3>Irala Nahuel</h3>
+                        <p>Responsable de Marketing y Publicidad</p>
+                        <div class="redes-miembro">
+    <a href="https://www.instagram.com/nahu_247?stkn=MTJ6cWhvbTM5c3ZlNQ%3D%3D&utm_source=qr"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Instagram de Nahuel">
+        <img src="instagram.webp" alt="Instagram">
+    </a>
+    <a href="https://www.facebook.com/people/Nahuel-Irala/pfbid0nAAYD4CphR6wAbdfX3cVeuRmchv7BhEVn7gNMFCosicc4NeBj8hUm9U3Mv6sjcVpl/?rdid=k1wr8bf5Y0DBnhv2&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1B2BHCFNF2%2F"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Facebook de Irala Nahuel">
+        <img src="facebook.webp" alt="Facebook">
+    </a>
+</div>
+                    </article>
+
+                    <article class="miembro revelar">
+                        <div class="foto">
+                            <img src="fabricio.jpeg" alt="Ayala Fabricio">
+                        </div>
+                        <h3>Ayala Fabricio</h3>
+                        <p>Responsable de Administración y Finanzas</p>
+                        <div class="redes-miembro">
+    <a href="https://www.instagram.com/fabricioayala__?stkn=MWd3ZjR3M3BleWNhMA=="
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Instagram de Fabricio">
+        <img src="instagram.webp" alt="Instagram">
+    </a>
+    <a href="https://www.facebook.com/fabri.ayala.3158"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Facebook de Fabricio Ayala">
+        <img src="facebook.webp" alt="Facebook">
+    </a>
+</div>
+                    </article>
+
+                    <article class="miembro revelar">
+                        <div class="foto">
+                            <img src="Xiomara.jpeg" alt="Aguilar Xiomara">
+                        </div>
+                        <h3>Aguilar Xiomara</h3>
+                        <p>Atención al Cliente y Gestión de Solicitudes</p>
+                        <div class="redes-miembro">
+                            <a href="https://www.instagram.com/xiomiaguilar_/"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Instagram de Xiomara Aguilar">
+                                <img src="instagram.webp" alt="Instagram">
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=100089780536716"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Facebook de Xiomara Aguilar">
+                                <img src="facebook.webp" alt="Facebook">
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="preguntas">
+            <div class="contenedor">
+
+                <div class="encabezado-seccion revelar">
+                    <span class="subtitulo">PREGUNTAS FRECUENTES</span>
+
+                    <h2>¿Tenés alguna duda?</h2>
+
+                    <p>
+                        Respondemos algunas consultas frecuentes sobre nuestros servicios.
+                    </p>
+                </div>
+
+                <div class="faq-lista">
+
+                    <article class="faq-item revelar">
+                        <button class="faq-pregunta">
+                            ¿Pueden recuperar mis archivos?
+                            <span>+</span>
+                        </button>
+
+                        <div class="faq-respuesta">
+                            <p>
+                                Primero realizamos un diagnóstico. Si es técnicamente
+                                posible, realizamos tareas de resguardo, organización
+                                o migración.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item revelar">
+                        <button class="faq-pregunta">
+                            ¿Realizan copias de seguridad?
+                            <span>+</span>
+                        </button>
+
+                        <div class="faq-respuesta">
+                            <p>
+                                Sí. Podemos realizar copias, duplicación y migración
+                                de información.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item revelar">
+                        <button class="faq-pregunta">
+                            ¿Reparan componentes de computadora?
+                            <span>+</span>
+                        </button>
+
+                        <div class="faq-respuesta">
+                            <p>
+                                No realizamos reparaciones de hardware. Los casos
+                                especializados pueden derivarse a un laboratorio.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item revelar">
+                        <button class="faq-pregunta">
+                            ¿Cómo solicito un diagnóstico?
+                            <span>+</span>
+                        </button>
+
+                        <div class="faq-respuesta">
+                            <p>
+                                Podés completar el formulario de diagnóstico desde
+                                el siguiente enlace.
+                            </p>
+
+                            <a href="diagnostico.html" class="boton boton-principal">
+                                Solicitar diagnóstico
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="guardadata-promocion fondo-suave" id="guardadata-promocion" aria-labelledby="titulo-guardadata-promocion">
+            <div class="contenedor guardadata-promocion-contenido">
+                <div>
+                    <span class="subtitulo">HERRAMIENTA OPCIONAL</span>
+                    <h2 id="titulo-guardadata-promocion">Conocé GuardaData</h2>
+                    <p>Organizá archivos, revisá recomendaciones y explorá el espacio digital de demostración.</p>
+                </div>
+                <a class="boton boton-principal" href="guardadata.html"><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i> Entrar a GuardaData</a>
+            </div>
+        </section>
+
+        <section id="contacto" class="contacto">
+    <div class="contenedor contacto-grid">
+
+        <div class="revelar">
+            <span class="subtitulo">CONTACTO</span>
+
+            <h2>Hablemos sobre tus datos.</h2>
+
+            <p>
+                Comunicate con S.G.D. para realizar consultas o solicitar
+                un diagnóstico. Evaluamos cada caso de manera personalizada.
+            </p>
+
+            <div class="datos-contacto">
+                <p>
+                    ✉
+                    <a href="mailto:contactossgd@gmail.com">
+                        contactossgd@gmail.com
+                    </a>
+                </p>
+
+                <p>
+                    📸
+                    <a href="https://www.instagram.com/TU_USUARIO/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Instagram oficial
+                    </a>
+                </p>
+
+                <p>
+                    👍
+                    <a href="https://www.facebook.com/profile.php?id=61596182125520&mibextid=wwXIfr&rdid=3iZB7610UMc2uPd5&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1MD6VJuB36%2F%3Fmibextid%3DwwXIfr#"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Facebook oficial
+                    </a>
+                </p>
+            </div>
+        </div>
+
+                <div class="contacto-card revelar">
+                    <h3>¿Necesitás un diagnóstico?</h3>
+
+                    <p>
+                        Contanos qué problema tenés y evaluaremos tu situación.
+                    </p>
+
+                    <a href="diagnostico.html" class="boton boton-principal">
+                        Solicitar diagnóstico
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+<div id="visor-foto" class="visor-foto">
+    <button id="cerrar-visor" aria-label="Cerrar imagen">×</button>
+    <img id="foto-ampliada" src="" alt="Foto ampliada">
+</div>
+    <footer class="revelar">
+    <div class="contenedor">
+        <p>© 2026 S.G.D. - S.R.L. — Seguridad Global de Datos.</p>
+
+        <div class="redes-oficiales">
+            <a class="red-instagram"
+               href="https://www.instagram.com/sgd.seguridad/"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Instagram oficial de S.G.D.">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a class="red-facebook"
+               href="https://www.facebook.com/profile.php?id=61596182125520&mibextid=wwXIfr&rdid=3iZB7610UMc2uPd5&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1MD6VJuB36%2F%3Fmibextid%3DwwXIfr#"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Facebook oficial de S.G.D.">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contactossgd@gmail.com"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="red-correo">
+    <i class="fa-solid fa-envelope"></i>
+</a>
+        </div>
+    </div>
+</footer>
+
+    <button id="volver-arriba" aria-label="Volver arriba">↑</button>
+
+    
+
+    <script src="static-auth.js?v=20261030-static1"></script>
+    <script src="script.js?v=20261024-2"></script>
+</body>
+</html>

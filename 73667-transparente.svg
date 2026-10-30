@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1536">
+    <defs>
+        <filter id="transparencia-blanca" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="
+                1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                -4.252 -14.304 -1.444 0 20" />
+        </filter>
+    </defs>
+    <image href="73667.png" width="1536" height="1536" filter="url(#transparencia-blanca)" />
+</svg>

@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html class="page-cuenta" lang="es">
+<head>
+    <link rel="stylesheet" href="styles.css?v=20261028-2">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+    
+</head>
+
+<body>
+    <script>
+        document.documentElement.classList.add("cuenta-autenticando");
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            const temaGuardado = localStorage.getItem("tema-sgd");
+            if (temaGuardado) {
+                document.body.classList.toggle("tema-oscuro", temaGuardado === "oscuro");
+                document.body.setAttribute("data-theme", temaGuardado === "oscuro" ? "dark" : "light");
+                document.documentElement.setAttribute("data-theme", temaGuardado === "oscuro" ? "dark" : "light");
+            }
+        } catch {}
+    </script>
+    <nav class="controles-tema" aria-label="Selector de tema">
+        <button id="boton-tema" class="tema-btn" type="button" aria-label="Cambiar a tema oscuro" title="Cambiar tema">🌙</button>
+    </nav>
+<main class="contenedor-cuenta">
+
+        <div class="logo revelar">
+            <img src="73667.png" alt="Logo de Seguridad Global de Datos">
+
+            <div class="siglas">
+                <span class="s">S</span>.<span class="g">G</span>.<span class="d">D</span>
+            </div>
+
+            <p class="empresa">
+                <span class="seguridad">Seguridad</span>
+                <span class="global">Global</span>
+                <span class="datos">de Datos</span>
+            </p>
+
+            <p class="subtitulo">Protegemos la información que importa</p>
+        </div>
+
+        <section class="tarjeta revelar tarjeta-planeta">
+            <canvas id="planeta-cuenta" class="planeta-cuenta" aria-hidden="true"></canvas>
+
+            <p class="estado-cuenta" role="note">Modo estático de demostración: los perfiles y solicitudes se guardan solo en este navegador. El descuento de Precios no requiere cuenta y dura siete días desde la primera visita a esa página. No uses contraseñas ni datos reales; no hay servidor ni sincronización entre dispositivos.</p>
+
+            <div class="botones-tipo" role="tablist" aria-label="Opciones de perfil">
+                <button class="boton-tipo activo" type="button" role="tab" data-formulario="login" aria-controls="form-login" aria-selected="true">
+                    Iniciar sesión
+                </button>
+                <button class="boton-tipo" type="button" role="tab" data-formulario="registro" aria-controls="form-registro" aria-selected="false">
+                    Crear perfil
+                </button>
+            </div>
+
+            <form id="form-login" class="formulario activo" role="tabpanel" aria-hidden="false">
+
+                <h2>Iniciar sesión</h2>
+                <p class="descripcion">
+                    Ingresá con el perfil de demostración guardado en este navegador.
+                </p>
+                <div class="campo">
+                    <label for="login-correo">Correo electrónico</label>
+                    <input type="email" id="login-correo"
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email" required>
+                </div>
+
+                <div class="campo">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" name="password" autocomplete="current-password" required>
+                </div>
+
+                <div class="opciones">
+                    <a href="recuperar-password.html">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="boton-principal">Iniciar sesión</button>
+                <div class="separador">O</div>
+                <button class="boton-google" id="boton-google" type="button" disabled>
+                    <span class="google-marca" aria-hidden="true">G</span>
+                    Google no disponible en esta demostración
+                </button>
+                <div class="opciones opciones-privacidad">
+                    <a href="privacidad.html">Consultar la política de privacidad</a>
+                </div>
+                <p class="estado-cuenta" id="estado-cuenta-form" role="status" aria-live="polite"></p>
+            </form>
+
+            <form id="form-registro" class="formulario" role="tabpanel" aria-hidden="true">
+
+                <h2>Crear cuenta</h2>
+                <p class="descripcion">
+                    Creá un perfil de prueba que se guarda únicamente en este navegador.
+                </p>
+                <div class="fila">
+                    <div class="campo">
+                        <label for="registro-nombre">Nombre</label>
+                        <input type="text" id="registro-nombre"
+                            placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="registro-apellido">Apellido</label>
+                        <input type="text" id="registro-apellido"
+                            placeholder="Tu apellido" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="registro-empresa">Empresa (opcional)</label>
+                        <input type="text" id="registro-empresa" maxlength="100" autocomplete="organization">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="registro-correo">Correo electrónico</label>
+                    <input type="email" id="registro-correo"
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email" required>
+                </div>
+
+                <div class="campo">
+                    <label for="registro-password">Contraseña</label>
+                    <input type="password" id="registro-password" name="password" autocomplete="new-password" minlength="12" required>
+                    <small>Usá al menos 12 caracteres.</small>
+                </div>
+
+                <div class="campo">
+                    <label for="registro-confirmar">Confirmar contraseña</label>
+                    <input type="password" id="registro-confirmar" name="confirmar" autocomplete="new-password" minlength="12" required>
+                </div>
+
+                <label class="checkbox">
+                    <input type="checkbox" id="terminos" required>
+                    <span>Leí la <a href="privacidad.html">Política de privacidad</a> y las <a href="condiciones-servicio.html">Condiciones del servicio</a>.</span>
+                </label>
+
+                <button type="submit" class="boton-principal">
+                    Crear cuenta
+                </button>
+                <p class="estado-cuenta" id="estado-registro" role="status" aria-live="polite"></p>
+            </form>
+
+        </section>
+
+        </section>
+
+        <div class="volver revelar">
+            <a href="index.html">← Volver al inicio</a>
+        </div>
+<div class="beneficios revelar">
+    <div>📍 Datos en este dispositivo</div>
+    <div>📁 Solicitudes organizadas</div>
+    <div>🤝 Atención personalizada</div>
+</div>
+
+<div class="enlaces-cuenta revelar">
+    <a href="diagnostico.html">Solicitar diagnóstico</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contactossgd@gmail.com"
+   target="_blank"
+   rel="noopener noreferrer">
+    Contactarnos
+</a>
+</div>
+    </main>
+
+    
+
+    <script src="static-auth.js?v=20261030-static1"></script>
+    <script src="script.js?v=20261017-1"></script>
+</body>
+</html>

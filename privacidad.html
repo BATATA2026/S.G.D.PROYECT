@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="page-legal" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de privacidad y tratamiento de datos de S.G.D.">
+    <title>Política de privacidad | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            if (localStorage.getItem("tema-sgd") === "oscuro") document.body.classList.add("tema-oscuro");
+        } catch {}
+    </script>
+    <header class="legal-header">
+        <a class="legal-marca revelar" href="index.html" aria-label="S.G.D., inicio"><span class="marca-s">S</span>.<span class="marca-g">G</span>.<span class="marca-d">D</span>.</a>
+        <div class="legal-acciones revelar">
+            <button class="legal-tema" id="boton-tema" type="button" aria-label="Cambiar a tema oscuro" aria-pressed="false" title="Cambiar tema"><span id="icono-tema" aria-hidden="true">☾</span></button>
+            <a class="legal-volver" href="index.html">Volver al inicio</a>
+        </div>
+    </header>
+    <main class="legal-contenido">
+        <p class="legal-eyebrow revelar">Información legal · Actualizada el 17/10/2026</p>
+        <h1 class="revelar">Política de privacidad</h1>
+        <p class="legal-bajada revelar">Esta página explica qué información utiliza este sitio, dónde se guarda y qué opciones tiene cada persona.</p>
+
+        <div class="legal-aviso revelar">
+            <strong>Identificación del responsable:</strong> el sitio identifica a S.G.D. como Seguridad Global de Datos y publica el correo contactossgd@gmail.com, pero todavía no informa razón social, CUIT ni domicilio legal. Esos datos deben completarse y verificarse antes de usar el sitio para contratar servicios.
+        </div>
+
+        <section class="legal-seccion revelar">
+            <h2>Qué datos se usan</h2>
+            <p>El registro solicita nombre, apellido, empresa opcional, correo y contraseña. Los formularios de servicio pueden solicitar tipo de dispositivo, descripción del problema, fecha elegida y modalidad de pago. El sitio no solicita números de tarjeta.</p>
+            <p>Esta copia es una demostración estática: los datos de perfil, el hash local de la contraseña, los dispositivos de muestra y el historial de solicitudes quedan únicamente en el almacenamiento del navegador de este dispositivo. No hay autenticación de servidor ni sincronización entre equipos; no ingreses contraseñas reutilizadas ni datos personales reales. Borrar los datos del navegador puede eliminar el perfil y su historial.</p>
+            <p>El formulario de diagnóstico no requiere iniciar sesión. Sus respuestas se guardan temporalmente en la sesión del navegador y no se envían a S.G.D. La promoción de precios se aplica sin cuenta durante siete días desde la primera visita a Precios en ese navegador.</p>
+            <p>La solicitud de servicio y su historial se guardan solo en el navegador si hay un perfil de demostración activo y el correo del formulario coincide con ese perfil. Los estados son ilustrativos; no confirman que S.G.D. haya recibido, asignado o completado un servicio. La solicitud prepara un correo que la persona debe revisar y enviar por su propia aplicación; no se envía automáticamente.</p>
+            <p>Los comentarios publicados se guardan localmente en el navegador donde se cargaron; no se sincronizan con un servidor.</p>
+        </section>
+
+        <section class="legal-seccion revelar">
+            <h2>Finalidad y acceso</h2>
+            <p>La información ingresada se usa para preparar y coordinar la consulta solicitada. No ingreses datos sensibles ni contenido de archivos en los campos de texto. Si un servicio autorizado requiere revisar un dispositivo o archivo, el acceso debe limitarse a lo necesario para esa tarea.</p>
+            <p>La autenticación de esta copia es solo una simulación local para una presentación. No ofrece protección de cuentas ni debe utilizarse para almacenar información real o sensible.</p>
+        </section>
+
+        <section class="legal-seccion revelar">
+            <h2>Conservación y control</h2>
+            <p>Las preferencias locales y los comentarios pueden borrarse desde el navegador. Para consultar, corregir o solicitar la eliminación de una cuenta y sus datos asociados en la base de datos, escribí a <a href="mailto:contactossgd@gmail.com">contactossgd@gmail.com</a>. La identidad podrá verificarse antes de entregar datos y la supresión puede estar limitada cuando una obligación legal o una orden de autoridad competente exija conservarlos.</p>
+            <p>Una restricción de acceso al servicio o a nuevas solicitudes no elimina el derecho legal a consultar los propios datos. Ese derecho solo podrá limitarse en el alcance que disponga una norma u orden válida, protegiendo información de terceros y actuaciones reservadas.</p>
+            <p>El tratamiento de datos debe ajustarse a la Ley 25.326 de Protección de Datos Personales y demás normas aplicables. Esta política no reemplaza el asesoramiento jurídico ni la información que el responsable debe completar.</p>
+        </section>
+
+        <section class="legal-seccion revelar">
+            <h2>Normativa oficial</h2>
+            <ul>
+                <li><a href="https://www.argentina.gob.ar/normativa/nacional/ley-25326-64790/actualizacion" target="_blank" rel="noopener noreferrer">Ley 25.326 de Protección de Datos Personales</a></li>
+                <li><a href="https://www.argentina.gob.ar/normativa/nacional/ley-24240-638/actualizacion" target="_blank" rel="noopener noreferrer">Ley 24.240 de Defensa del Consumidor</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer class="legal-footer revelar">© 2026 S.G.D. - S.R.L. · Seguridad Global de Datos</footer>
+    <script src="script.js"></script>
+</body>
+</html>

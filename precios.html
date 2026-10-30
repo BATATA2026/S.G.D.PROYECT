@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="page-precios" lang="es">
+<head>
+    <link rel="stylesheet" href="styles.css?v=20261024-3">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios y Ofertas | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    
+</head>
+
+<body>
+    <script>
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            const temaGuardado = localStorage.getItem("tema-sgd");
+            if (temaGuardado) {
+                document.body.classList.toggle("tema-oscuro", temaGuardado === "oscuro");
+                document.body.setAttribute("data-theme", temaGuardado === "oscuro" ? "dark" : "light");
+            }
+        } catch {}
+    </script>
+    <div id="transicion-tema"></div>
+
+    <header class="encabezado-principal">
+        <nav class="nav contenedor" aria-label="Navegación principal">
+            <a href="index.html" class="marca" aria-label="S.G.D.">
+                <span class="s">S</span>.<span class="g">G</span>.<span class="d">D</span>
+            </a>
+            <div class="acciones-nav">
+                <button id="boton-tema" class="tema-btn" type="button" aria-label="Cambiar a tema oscuro" title="Cambiar tema">
+                    <i id="icono-tema" class="fa-solid fa-moon" aria-hidden="true"></i>
+                </button>
+                <a href="index.html" class="boton-volver">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Inicio
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contenedor contenido">
+        <div class="banner-oferta revelar" id="estado-promocion" hidden aria-live="polite">
+            En esta demostración estática, tenés un 10% de descuento durante 7 días desde tu primera visita a Precios. No necesitás iniciar sesión; la promoción se guarda en este navegador.
+        </div>
+
+        <h1 class="revelar">Precios aproximados</h1>
+        <p class="introduccion revelar">El precio final depende de la complejidad y el alcance de cada trabajo. Confirmamos el presupuesto después de evaluar el caso.</p>
+        <p class="introduccion revelar">Seleccioná las cantidades que necesitás. Los valores son orientativos y el presupuesto final se confirma según el alcance del trabajo.</p>
+
+        <section class="catalogo-primarios" aria-labelledby="titulo-servicios-primarios">
+        <div class="servicios-categoria revelar">
+            <span class="subtitulo">SERVICIO PRIMARIO</span>
+            <h2 id="titulo-servicios-primarios">Servicios principales</h2>
+            <p>Son el punto de partida para proteger, organizar o evaluar tu información.</p>
+        </div>
+        <div class="precio-grid">
+            <div class="tarjeta revelar">
+                <h2>Resguardo preventivo</h2>
+                <p class="precio-tachado" data-precio-base>Precio base: $35.000</p>
+                <div class="precio" data-precio-actual>$35.000</div>
+                <p class="detalle-precio" data-detalle-precio>Precio base orientativo</p>
+                <p>Copias de seguridad, duplicación y planificación de respaldos.</p>
+                <br>
+                <label class="seleccion-servicio">
+                    <input type="checkbox" class="servicio-seleccionado" data-id="resguardo" data-nombre="Resguardo preventivo" data-precio-original="35000" data-precio-promocional="31500">
+                    <span>Agregar este servicio</span>
+                </label>
+                <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="resguardo" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Resguardo preventivo"></label>
+            </div>
+
+            <div class="tarjeta revelar">
+                <h2>Seguridad y antivirus</h2>
+                <p class="precio-tachado" data-precio-base>Precio base: $45.000</p>
+                <div class="precio" data-precio-actual>$45.000</div>
+                <p class="detalle-precio" data-detalle-precio>Precio base orientativo</p>
+                <p>Análisis de amenazas, eliminación de malware y protección de archivos.</p>
+                <br>
+                <label class="seleccion-servicio">
+                    <input type="checkbox" class="servicio-seleccionado" data-id="seguridad" data-nombre="Seguridad y antivirus" data-precio-original="45000" data-precio-promocional="40500">
+                    <span>Agregar este servicio</span>
+                </label>
+                <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="seguridad" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Seguridad y antivirus"></label>
+            </div>
+
+            <div class="tarjeta revelar">
+                <h2>Organización y acceso</h2>
+                <p class="precio-tachado" data-precio-base>Precio base: $40.000</p>
+                <div class="precio" data-precio-actual>$40.000</div>
+                <p class="detalle-precio" data-detalle-precio>Precio base orientativo</p>
+                <p>Clasificación de archivos, organización de carpetas y migración de datos.</p>
+                <br>
+                <label class="seleccion-servicio">
+                    <input type="checkbox" class="servicio-seleccionado" data-id="organizacion" data-nombre="Organización y acceso" data-precio-original="40000" data-precio-promocional="36000">
+                    <span>Agregar este servicio</span>
+                </label>
+                <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="organizacion" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Organización y acceso"></label>
+            </div>
+
+            <div class="tarjeta revelar">
+                <h2>Diagnóstico y asesoramiento</h2>
+                <p class="precio-tachado" data-precio-base>Precio base: $30.000</p>
+                <div class="precio" data-precio-actual>$30.000</div>
+                <p class="detalle-precio" data-detalle-precio>Precio base orientativo</p>
+                <p>Evaluación inicial y orientación según las necesidades del caso.</p>
+                <br>
+                <label class="seleccion-servicio">
+                    <input type="checkbox" class="servicio-seleccionado" data-id="diagnostico" data-nombre="Diagnóstico y asesoramiento" data-precio-original="30000" data-precio-promocional="27000">
+                    <span>Agregar este servicio</span>
+                </label>
+                <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="diagnostico" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Diagnóstico y asesoramiento"></label>
+            </div>
+        </div>
+        <section class="seleccion-resumen revelar" aria-labelledby="titulo-seleccion">
+            <h2 id="titulo-seleccion">Tu selección</h2>
+            <p id="resumen-seleccion" aria-live="polite">Todavía no agregaste servicios.</p>
+            <button type="button" class="boton boton-principal" id="continuar-servicios" disabled>Seleccioná al menos un servicio</button>
+        </section>
+        </section>
+        <p class="nota revelar" id="nota-promocion-precios">Los precios publicados son bases orientativas por unidad. El presupuesto final se confirma antes de contratar.</p>
+
+        <section class="catalogo-secundarios" aria-labelledby="titulo-servicios-secundarios">
+            <div class="servicios-categoria revelar">
+                <span class="subtitulo">SERVICIO SECUNDARIO</span>
+                <h2 id="titulo-servicios-secundarios">Servicios complementarios</h2>
+                <p>Se ofrecen según lo que surja del servicio principal. Las tarifas indicadas son orientativas por unidad y se confirman al evaluar el alcance.</p>
+            </div>
+            <div class="precio-grid" id="servicios-secundarios">
+                <article class="tarjeta revelar">
+                    <h2>Migración y transferencia de datos</h2>
+                    <p class="precio-tachado" data-precio-base>Precio base orientativo: $25.000</p><div class="precio" data-precio-actual>$25.000</div><p class="detalle-precio" data-detalle-precio>Precio base por unidad</p>
+                    <p>Transferencia entre dispositivos, copiado, verificación y compatibilidad de formatos.</p>
+                    <p class="relacion-servicio"><strong>Relación:</strong> complementa la organización o el resguardo, para mover la información ya ordenada o protegida.</p>
+                    <label class="seleccion-servicio"><input type="checkbox" class="servicio-seleccionado" data-id="migracion" data-nombre="Migración y transferencia de datos" data-precio-original="25000"><span>Agregar este servicio</span></label>
+                    <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="migracion" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Migración y transferencia de datos"></label>
+                </article>
+                <article class="tarjeta revelar">
+                    <h2>Recuperación por software</h2>
+                    <p class="precio-tachado" data-precio-base>Precio base orientativo: $50.000</p><div class="precio" data-precio-actual>$50.000</div><p class="detalle-precio" data-detalle-precio>Precio base por unidad</p>
+                    <p>Intento de restauración de archivos borrados o dañados en dispositivos funcionales; no se garantiza la recuperación.</p>
+                    <p class="relacion-servicio"><strong>Relación:</strong> surge del diagnóstico; si el caso excede el alcance, puede derivarse.</p>
+                    <label class="seleccion-servicio"><input type="checkbox" class="servicio-seleccionado" data-id="recuperacion" data-nombre="Recuperación por software" data-precio-original="50000"><span>Agregar este servicio</span></label>
+                    <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="recuperacion" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Recuperación por software"></label>
+                </article>
+                <article class="tarjeta revelar">
+                    <h2>Capacitación y guía de uso</h2>
+                    <p class="precio-tachado" data-precio-base>Precio base orientativo: $20.000</p><div class="precio" data-precio-actual>$20.000</div><p class="detalle-precio" data-detalle-precio>Precio base por unidad</p>
+                    <p>Guía para realizar copias básicas, reconocer alertas y mantener los archivos ordenados.</p>
+                    <p class="relacion-servicio"><strong>Relación:</strong> amplía el asesoramiento para que el cliente pueda cuidar sus datos.</p>
+                    <label class="seleccion-servicio"><input type="checkbox" class="servicio-seleccionado" data-id="capacitacion" data-nombre="Capacitación y guía de uso" data-precio-original="20000"><span>Agregar este servicio</span></label>
+                    <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="capacitacion" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Capacitación y guía de uso"></label>
+                </article>
+                <article class="tarjeta revelar">
+                    <h2>Mantenimiento periódico</h2>
+                    <p class="precio-tachado" data-precio-base>Precio base orientativo: $30.000</p><div class="precio" data-precio-actual>$30.000</div><p class="detalle-precio" data-detalle-precio>Precio base por unidad</p>
+                    <p>Revisión programada cada 6 o 12 meses de respaldos, protecciones y organización.</p>
+                    <p class="relacion-servicio"><strong>Relación:</strong> da continuidad al resguardo y ayuda a mantenerlo actualizado.</p>
+                    <label class="seleccion-servicio"><input type="checkbox" class="servicio-seleccionado" data-id="mantenimiento" data-nombre="Mantenimiento periódico" data-precio-original="30000"><span>Agregar este servicio</span></label>
+                    <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="mantenimiento" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Mantenimiento periódico"></label>
+                </article>
+                <article class="tarjeta revelar">
+                    <h2>Derivación y coordinación con especialistas</h2>
+                    <p class="precio-tachado" data-precio-base>Precio base orientativo: $15.000</p><div class="precio" data-precio-actual>$15.000</div><p class="detalle-precio" data-detalle-precio>Precio base por unidad</p>
+                    <p>Coordinación con laboratorios y gestión de entrega y recepción en casos de daño físico.</p>
+                    <p class="relacion-servicio"><strong>Relación:</strong> se propone cuando el diagnóstico detecta un problema que excede el alcance de S.G.D.</p>
+                    <label class="seleccion-servicio"><input type="checkbox" class="servicio-seleccionado" data-id="derivacion" data-nombre="Derivación y coordinación con especialistas" data-precio-original="15000"><span>Agregar este servicio</span></label>
+                    <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="derivacion" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Derivación y coordinación con especialistas"></label>
+                </article>
+                <article class="tarjeta revelar">
+                    <h2>Asesoramiento en Nube S.G.D.</h2>
+                    <p class="precio-tachado" data-precio-base>Precio base orientativo: $12.000</p><div class="precio" data-precio-actual>$12.000</div><p class="detalle-precio" data-detalle-precio>Precio base por unidad</p>
+                    <p>Orientación sobre alta y gestión de cuentas, sujeta a disponibilidad de la plataforma.</p>
+                    <p class="relacion-servicio"><strong>Relación:</strong> servicio complementario futuro al resguardo; aún no disponible.</p>
+                    <label class="seleccion-servicio"><input type="checkbox" class="servicio-seleccionado" data-id="nube" data-nombre="Asesoramiento en Nube S.G.D." data-precio-original="12000"><span>Agregar este servicio</span></label>
+                    <label class="cantidad-servicio">Cantidad <input type="number" class="cantidad-servicio-input" data-cantidad-para="nube" min="0" step="1" value="0" inputmode="numeric" aria-label="Cantidad de Asesoramiento en Nube S.G.D."></label>
+                </article>
+            </div>
+            <p class="nota nota-secundarios revelar"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> La recuperación por software solo se intenta cuando las condiciones lo permiten. No se garantiza recuperar todos los datos. Los servicios futuros se ofrecerán cuando estén disponibles.</p>
+        </section>
+    </main>
+<footer class="revelar">
+    <div class="contenedor">
+        <p>© 2026 S.G.D. - S.R.L. — Seguridad Global de Datos.</p>
+        <div class="redes-oficiales">
+            <a href="https://www.instagram.com/sgd.seguridad/" class="red-instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/" class="red-facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="mailto:contactossgd@gmail.com" class="red-correo"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </div>
+</footer>
+    
+
+    <script src="static-auth.js?v=20261030-static2"></script>
+    <script src="script.js?v=20261030-public-demo"></script>
+</body>
+</html>

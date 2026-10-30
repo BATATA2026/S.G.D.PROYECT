@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="page-clientes" lang="es">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Clientes | S.G.D.</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=20261030">
+    
+    
+</head>
+
+<body>
+    <script>
+        try {
+            const movimientoDesactivado = localStorage.getItem("sgd-animaciones") === "desactivadas";
+            document.documentElement.classList.toggle("animaciones-deshabilitadas", movimientoDesactivado);
+            if (!movimientoDesactivado) document.documentElement.classList.add("animaciones-listas");
+        } catch { document.documentElement.classList.add("animaciones-listas"); }
+        try {
+            const temaGuardado = localStorage.getItem("tema-sgd");
+            if (temaGuardado) {
+                document.body.classList.toggle("tema-oscuro", temaGuardado === "oscuro");
+                document.body.setAttribute("data-theme", temaGuardado === "oscuro" ? "dark" : "light");
+            }
+        } catch {}
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <div class="contenedor">
+        <header class="encabezado-principal">
+    <nav class="nav contenedor">
+        <!-- El Logo siempre visible -->
+        <a href="index.html" class="marca">
+            <span class="s">S</span>.<span class="g">G</span>.<span class="d">D</span>.
+        </a>
+        
+        <!-- Acciones a la derecha -->
+        <div class="acciones-nav" style="display: flex; align-items: center; gap: 15px;">
+            <button id="boton-tema" class="tema-btn" type="button" aria-label="Cambiar a tema oscuro" title="Cambiar tema">🌙</button>
+            <a href="index.html" class="boton-volver">
+                <i class="fa-solid fa-arrow-left"></i> Inicio
+            </a>
+        </div>
+    </nav>
+</header>
+
+        <h1 class="revelar">Transparencia Radical</h1>
+        <p class="revelar" style="margin-bottom: 40px;">Escuchamos a nuestros clientes para evolucionar. Aquí, sus experiencias reales.</p>
+
+        <div class="grid-clientes" id="lista-comentarios">
+            
+            <div class="card revelar">
+                <div class="rating">★★★★★</div>
+                <p class="feedback">"La gestión de archivos fue impecable. S.G.D. salvó nuestra base de datos en tiempo récord."</p>
+                <div class="nombre-empresa">Logística del Sur S.A.</div>
+            </div>
+
+            <div class="card revelar">
+                <div class="rating">★★★☆☆</div>
+                <p class="feedback">"El trabajo final fue excelente, pero la comunicación durante la primera fase fue lenta y poco clara."</p>
+                <div class="nombre-empresa">TechSoluciones C.B.</div>
+                <div class="sgd-respuesta">Respuesta S.G.D.: Gracias por la honestidad. Hemos implementado un nuevo protocolo de comunicación diaria para mejorar esto.</div>
+            </div>
+
+            <div class="card revelar">
+                <div class="rating">★★★★☆</div>
+                <p class="feedback">"Muy profesionales. Cumplieron con el diagnóstico en los plazos prometidos. Recomendados."</p>
+                <div class="nombre-empresa">Inversiones Delta</div>
+            </div>
+
+        </div>
+
+        <section class="formulario-comentario revelar" id="dejar-comentario" aria-labelledby="titulo-comentario">
+            <h2 id="titulo-comentario">Dejanos tu comentario</h2>
+            <p>Tu experiencia y valoración ayudan a otras personas a conocernos.</p>
+            <form id="formulario-comentario">
+                <label for="nombre-comentario">Tu nombre</label>
+                <input id="nombre-comentario" name="nombre" type="text" maxlength="60" autocomplete="name" required>
+
+                <label for="estrellas-comentario">Tu calificación</label>
+                <select id="estrellas-comentario" name="estrellas" required>
+                    <option value="">Elegí una cantidad de estrellas</option>
+                    <option value="5">★★★★★ - 5 estrellas</option>
+                    <option value="4">★★★★☆ - 4 estrellas</option>
+                    <option value="3">★★★☆☆ - 3 estrellas</option>
+                    <option value="2">★★☆☆☆ - 2 estrellas</option>
+                    <option value="1">★☆☆☆☆ - 1 estrella</option>
+                </select>
+
+                <label for="texto-comentario">Tu comentario</label>
+                <textarea id="texto-comentario" name="comentario" maxlength="600" required></textarea>
+                <button class="boton-publicar" type="submit">Publicar comentario</button>
+                <p class="estado-comentario" id="estado-comentario" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </div>
+<footer class="revelar">
+    <div class="contenedor">
+        <p>© 2026 S.G.D. - S.R.L. — Seguridad Global de Datos.</p>
+        <div class="redes-oficiales">
+            <a href="https://www.instagram.com/sgd.seguridad/" class="red-instagram" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/" class="red-facebook" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="mailto:contactossgd@gmail.com" class="red-correo" aria-label="Correo">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+    
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
